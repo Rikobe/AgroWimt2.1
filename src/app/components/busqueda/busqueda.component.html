@@ -1,0 +1,106 @@
+<head>
+</head>
+<body style="padding-right: 0px; padding-left: 0px;">
+      <div class="row">
+        <div class="col-3">
+          <h4 style="margin-bottom: 60px; margin-left: 30px;">Resultados de: {{busqueda}}</h4>
+          <h4 style="margin-left: 30px;">Filtros</h4>
+        </div>
+        <div class="col-4">
+          <h4>Ordenar por:</h4>
+          <h4 style="margin-left:90px;">Precio</h4>
+          <div style="margin-left:90px;" class="form-group">
+            <div class="form-check">
+              <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="optionsRadios" id="RBMame" value="option1" checked>
+                De mayor a menor
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="optionsRadios" id="RBMema" value="option2">
+                De menor a mayor
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="col-5">
+          <h4 style="visibility:hidden;">Ordenar por:</h4>
+          <h4 style="margin-left:90px;">Área</h4>
+          <div style="margin-left:90px;" class="form-group">
+            <div class="form-check">
+              <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="optionsRadios2" id="RBMame2" value="option3" checked>
+                De mayor a menor (m2)
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="optionsRadios2" id="RBMema2" value="option4">
+                De menor a mayor (m2)
+              </label>
+            </div>
+          </div>
+        </div>
+        <!--AQUI INICIAN LOS 2 CUADROS GRANDES-->
+        <div class="col-3" style="padding-left: 30px; padding-right: 30px;">
+          <div style="border-style: solid; border-width: 5px; border-color: black;">
+            <div class="form-group" style="padding:20px">
+              <h4>Ubicación</h4>
+              <div class="form-check">
+                <div *ngFor="let ubicacion of ubicaciones">
+                  <label class="form-check-label">
+                    <input id="{{ubicacion.Lugar}}" class="form-check-input" type="checkbox">
+                    {{ubicacion.Lugar}}
+                  </label>
+                  <br>
+                </div>
+              </div>
+              <hr>
+              <h4>Cultivo</h4>
+              <div class="form-check">
+                <div *ngFor="let cultivo of cultivos">
+                  <label class="form-check-label">
+                    <input id="{{cultivo.nombre}}" class="form-check-input" type="checkbox">
+                    {{cultivo.nombre}}
+                  </label>
+                  <br>
+                </div>
+              </div>
+              <hr>
+              <h4>Estación</h4>
+              <div class="form-check">
+                <div *ngFor="let estacion of estaciones">
+                  <label class="form-check-label">
+                    <input id="{{estacion.nombre}}" class="form-check-input" type="checkbox">
+                    {{estacion.nombre}}
+                  </label>
+                  <br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-9" style="padding-left: 30px; padding-right: 30px;">
+          <div style="border-style: solid; border-width: 5px; border-color: black; padding: 30px">
+            <!--AQUI INICIAN LOS ELEMENTOS DE BÚSQUEDA-->
+            <div class="row" style="border-style: solid; border-width: 5px; border-color: black; padding: 30px" *ngFor="let elemento of elementos">
+              <img class="col-3" src="{{elemento.imagen}}" width="150px" height="150px">
+              <div class="col-3">
+                <h4>{{elemento.titulo}}</h4>
+                <h4>${{elemento.precio}}</h4>
+                <h4>{{elemento.ubicacion}}</h4>
+              </div>
+              <div class="col-4">
+                <h4>Descripción: </h4>
+                <p align="justify">{{elemento.descripcion}}</p>
+              </div>
+              <div class="col-2">
+                <a href="{{elemento.URL}}"><h4 style="margin-top: 55px;">Mostrar ></h4></a>
+              </div>
+            </div>
+            <!--AQUI TERMINAN LOS ELEMENTOS DE BÚSQUEDA-->
+          </div>
+        </div>
+      </div>
+</body>

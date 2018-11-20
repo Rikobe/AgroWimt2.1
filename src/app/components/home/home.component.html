@@ -1,0 +1,53 @@
+<br>
+<h2>Cerca de ti</h2>
+<div class="row">
+  <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item" *ngFor="let tierra of tierras; let i = index " >
+    <div class="card h-100" *ngIf="i<cardLimit">
+      <a><img (click)="gototierra(tierra._id)" [routerLink]="['/perfiltierra']" class="card-img-top" src="{{url+'getFotoTierra/'+tierra.imagen}}" alt=""></a>
+      <div class="card-body">
+        <h4 class="card-title">
+          <a href="#" (click)="gototierra(tierra._id)">{{tierra.titulo}}</a>
+        </h4>
+        <p class="card-text">${{tierra.precio}}</p>
+        <p class="card-text">{{tierra.ciudad}}</p>
+        <p class="card-text">{{tierra.descripcion}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<h2 *ngIf="loggeado">Tus tierras</h2>
+<div class="row" *ngIf="loggeado">
+    <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item" *ngFor="let tierra of homeTierras">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="{{url+'getfotoTierra/'+tierra.imagen}}" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">{{tierra.titulo}}</a>
+            </h4>
+            <p class="card-text">${{tierra.precio}}</p>
+            <p class="card-text">{{tierra.ciudad}}</p>
+            <p class="card-text">{{tierra.descripcion}}</p>
+          </div>
+        </div>
+    </div>
+</div>
+<br>
+<h2 *ngIf="loggeado">En renta</h2>
+<div class="mt-3 row" *ngIf="loggeado">
+    <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item" *ngFor="let renta of rentas">
+        <div class="card h-100">
+          <a href="#"><img class="card-img-top" src="{{url+'getfotoTierra/'+renta.imagen}}" alt=""></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">{{renta.titulo}}</a>
+            </h4>
+            <p class="card-text">${{renta.precio}}</p>
+            <p class="card-text">{{renta.ciudad}}</p>
+            <p class="card-text">{{renta.descripcion}}</p>
+          </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>

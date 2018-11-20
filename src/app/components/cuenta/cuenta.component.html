@@ -1,0 +1,99 @@
+<head>
+  
+</head>
+<body style="padding-right: 0px; padding-right: 15px;">
+  <div class="row" style="background-color:dimgray;">
+    <!--Barrita de al lado-->
+    <div class="col-2" style="padding: 15px;">
+        <div style="margin-left: 15px; background-color: blue; border-style: solid; border-width: 5px; border-color: black;">
+          <h4>Perfil</h4>
+        </div>
+        <div style="margin-left: 15px; background-color: gray; border-style: solid; border-width: 5px; border-color: black;">
+          <h4>Tierras</h4>
+        </div>
+        <div style="margin-left: 15px; background-color: gray; border-style: solid; border-width: 5px; border-color: black;">
+          <h4>Contratos</h4>
+        </div>
+        <div style="margin-left: 15px; background-color: gray; border-style: solid; border-width: 5px; border-color: black;">
+          <h4>Historial</h4>
+        </div>
+        <div style="margin-left: 15px; background-color: gray; border-style: solid; border-width: 5px; border-color: black;">
+          <h4>Recursos</h4>
+        </div>
+    </div>
+    <div class="col-10">
+      <!--Contenido del perfil-->
+      <div class="row">
+        <div class="col-2" style="padding: 15px;">
+          <img src="{{profile?.picture}}" height="180px" width="180px">
+        </div>
+        <div class="col-5">
+          <h1>{{profile?.name}}</h1>
+          <h4>Perfil (público/privado)  <img style="border-radius: 5px; border-style: solid; border-width: 2px; border-color: black;" height="23px" width="23px" src="https://icon-icons.com/icons2/906/PNG/32/pencil_icon-icons.com_69999.png"></h4>
+        </div>
+        <div class="col-4"></div>
+        <div class="col-6">
+          <h3>Información del usuario</h3>
+          <div class="row" style="border-style: solid; border-width: 3px; border-color: black; background-color: white;">
+            <div class="col-6">
+              <h6>Nombre: {{usuario.Nombre}}</h6>
+              <br>
+              <h6>RFC: {{usuario.RFC}}</h6>
+              <br>
+              <h6>Calle: {{usuario.Calle}}</h6>
+              <br>
+              <h6>Colonia: {{usuario.Colonia}}</h6>
+              <br>
+              <h6>Número: {{usuario.Numero}}</h6>
+            </div>
+            <div class="col-6">
+              <h6>Teléfonos:</h6>
+              <h6 *ngFor="let tel of usuario.Telefonos">{{tel}}</h6>
+              <br>
+              <h6>Correo:</h6>
+              <h6>{{usuario.Correo}}</h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-5">
+          <div>
+            <h3>Información de cuenta</h3>
+            <div style="background-color: white; ">
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">Contratos</th>
+                        <th scope="col">Terrenos</th>
+                        <th scope="col">Rentas</th>
+                        <th scope="col">Eventos</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="table-secondary">
+                        <td>{{info.Contratos}}</td>
+                        <td>{{info.Terrenos}}</td>
+                        <td>{{info.Rentas}}</td>
+                        <td>{{info.Eventos}}</td>
+                      </tr>
+                    </tbody>
+                  </table> 
+            </div>
+          </div>  
+        </div>
+      </div>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-10" style="padding: 15px;">
+      <div class="row">
+        <div class="col-3" *ngFor="let tierra of tierras" style="background-color: white;border-style: solid; border-width: 2px; border-color: black;">
+          <img src="{{tierra.imagen}}" height="180px" width="255px">
+          <h3>{{tierra.titulo}}</h3>
+        </div>
+        <div class="col-3" height="200px" width="200px" style="background-color: white;border-style: solid; border-width: 2px; border-color: black;">
+            <img src="https://www.brandeps.com/icon-download/P/Plus-square-01.svg" height="180px" width="255px">
+            <br>
+          </div>
+      </div>
+    </div>
+  </div>
+</body>
