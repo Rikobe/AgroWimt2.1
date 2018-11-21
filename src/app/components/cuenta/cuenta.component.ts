@@ -44,13 +44,13 @@ export class CuentaComponent implements OnInit {
    }
 
   ngOnInit() {
-    if (this._authService.userProfile) {
-      this.profile = this._authService.userProfile;
-    } else {
-      this._authService.getProfile((err, profile) => {
-        this.profile = profile;
-      });
-    }
-    console.log(this.profile);
+    // if (this._authService.userProfile) {
+    //   this.profile = this._authService.userProfile;
+    // } else {
+    //   this._authService.getProfile((err, profile) => {
+    //     this.profile = profile;
+    //   });
+    // }
+    // console.log(this.profile);
   }
 }

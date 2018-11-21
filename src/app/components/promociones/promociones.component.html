@@ -12,7 +12,7 @@
             <div class="form-check">
               <div *ngFor="let ubicacion of ubicaciones">
                 <label class="form-check-label">
-                  <input id="{{ubicacion.Lugar}}" class="form-check-input" type="checkbox">
+                  <input id="{{ubicacion.Lugar}}" class="form-check-input" type="checkbox" (change)="setUbicaciones($event)">
                   {{ubicacion.Lugar}}
                 </label>
                 <br>
@@ -29,7 +29,6 @@
                 <br>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -41,13 +40,13 @@
               <h5>Precio</h5>
               <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="optionsRadios" id="RBMame" value="option1" checked>
+                <input type="radio" class="form-check-input" name="optionsRadios" id="RBMame" value="option1" checked (click)="sortPMaxMin()">
                   De mayor a menor
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="optionsRadios" id="RBMema" value="option2">
+                <input type="radio" class="form-check-input" name="optionsRadios" id="RBMema" value="option2" (click)="sortPMinMax()">
                   De menor a mayor
                 </label>
               </div>
@@ -56,20 +55,24 @@
               <h5>Área</h5>
               <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="optionsRadios2" id="RBMame2" value="option3" checked>
+                <input type="radio" class="form-check-input" name="optionsRadios2" id="RBMame2" value="option3" checked (click)="sortAMaxMin()">
                   De mayor a menor (m2)
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="optionsRadios2" id="RBMema2" value="option4">
+                <input type="radio" class="form-check-input" name="optionsRadios2" id="RBMema2" value="option4" (click)="sortAMinMax()">
                   De menor a mayor (m2)
                 </label>
               </div>
             </div>
          
       <br>
-      <div style="padding-left: 30px; padding-right: 30px; margin-top:10px;">
+      <br>
+      <div style="padding-left: 30px; padding-right: 30px; margin-top:10px;" *ngIf="tierras==null">
+        <h4>No se encuentran tierras del filtro establecido</h4>
+      </div>
+      <div style="padding-left: 30px; padding-right: 30px; margin-top:10px;" *ngIf="tierras!=null">
         <div style="border-style: solid; border-width: 3px; border-color: black; padding: 30px">
           <!--AQUI INICIAN LOS ELEMENTOS DE BÚSQUEDA-->
           <div *ngFor="let tierra of tierras">

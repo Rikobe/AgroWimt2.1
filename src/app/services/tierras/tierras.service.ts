@@ -36,6 +36,25 @@ export class TierrasService {
     return this._http.get(this.url+'getTierraPromocion', {headers:headers});
   }
 
+  getTierraTop(): Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.get(this.url+'getTierraTop', {headers:headers});
+  }
+
+  getFiltroUbicacionP(ubicaciones: String): Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.get(this.url+'getFiltroUbicacionP/'+ubicaciones, {headers:headers});
+  }
+
+  getFiltroUbicacionT(ubicaciones: String): Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.get(this.url+'getFiltroUbicacionT/'+ubicaciones, {headers:headers});
+  }
+
+  getBusqueda(busqueda:String): Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.get(this.url+'getBusqueda/'+busqueda, {headers:headers});
+  }
 
   //Help Methods
 

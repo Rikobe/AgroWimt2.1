@@ -15,6 +15,11 @@ export class PromocionesComponent implements OnInit {
   public tierras : Tierra[];
   public preciodesc : Number;
   public url : String = Global.url;
+  ubicacion: String[] = [];
+  sortPrecMinMax: any; 
+  sortPrecMaxMin: any;
+  sortArMaxMin: any;
+  sortArMinMax: any;
   ubicaciones: any = [
     { Lugar: 'Aguascalientes' },
     { Lugar: 'Baja California' },
@@ -62,44 +67,111 @@ export class PromocionesComponent implements OnInit {
     {nombre: 'Otoño'},
     {nombre: 'Invierno'},
   ];
-  elementos = [
-    {
-      imagen: '/',
-      titulo: 'Primer elemento',
-      precio: 500,
-      preciodesc: 400,
-      ubicacion: 'Sinaloa',
-      descripcion: 'Esto es un ejemplo de una descripción y es algo larga por lo que va a ser necesario un parrafo.',
-      URL: '/'
-    },
-    {
-      imagen: '/',
-      titulo: 'Segundo elemento',
-      precio: 1000,
-      preciodesc: 900,
-      ubicacion: 'Sonora',
-      descripcion: 'Esto es un ejemplo de una descripción y es algo larga por lo que va a ser necesario un parrafo.',
-      URL: '/'
-    },
-    {
-      imagen: '/',
-      titulo: 'Tercer elemento',
-      precio: 2000,
-      preciodesc: 1999,
-      ubicacion: 'Durango',
-      descripcion: 'Esto es un ejemplo de una descripción y es algo larga por lo que va a ser necesario un parrafo.',
-      URL: '/'
-    },
-  ];
+
   constructor(
     private _tierraService: TierrasService, 
     private _dataTransfer: DataTransferService, 
     private _authService:AuthService
-  ) { }
+  ) {
+
+    this.sortPrecMinMax = (tierra: Tierra[]) =>
+    tierra.sort((tierraA: Tierra, tierraB: Tierra) => {
+      if (tierraA.precio > tierraB.precio) return 1;
+      if (tierraA.precio < tierraB.precio) return 0;
+      return 0;
+    }); 
+
+    this.sortPrecMaxMin = (tierra: Tierra[]) =>
+    tierra.sort((tierraA: Tierra, tierraB: Tierra) => {
+      if (tierraA.precio < tierraB.precio) return 1;
+      if (tierraA.precio > tierraB.precio) return 0;
+      return 0;
+    }); 
+
+    this.sortArMaxMin = (tierra: Tierra[]) =>
+    tierra.sort((tierraA: Tierra, tierraB: Tierra) => {
+      if (tierraA.precio < tierraB.area) return 1;
+      if (tierraA.precio > tierraB.area) return 0;
+      return 0;
+    }); 
+
+    this.sortArMinMax = (tierra: Tierra[]) =>
+    tierra.sort((tierraA: Tierra, tierraB: Tierra) => {
+      if (tierraA.area > tierraB.area) return 1;
+      if (tierraA.area < tierraB.area) return 0;
+      return 0;
+    }); 
+  
+  }
 
   ngOnInit() {
     this.getTierraPromocion();
   }
+
+  setUbicaciones(e){
+    var ubicaciones: String;
+    //console.log("hola");
+    //console.log(e);
+    
+    if (e.target.checked){
+      this.ubicacion.push(e.target.id);
+
+      ubicaciones = this.ubicacion.toString();
+
+      this._tierraService.getFiltroUbicacionP(ubicaciones).subscribe(
+        response => {
+          if (response.resultado)
+            this.tierras = response.resultado;
+            if (this.tierras.length == 0)
+              this.tierras = null;
+            console.log(this.tierras);
+        },
+        error => {
+          console.log(<any>error);
+        }
+      );
+      console.log(ubicaciones);
+    }
+      
+    else {
+      let index = this.ubicacion.findIndex(value=>value === e.target.id);
+      this.ubicacion.splice(index,1);
+      ubicaciones = this.ubicacion.toString();
+      console.log(ubicaciones);    
+      if (ubicaciones == "")
+        this.getTierraPromocion();
+      else{
+        this._tierraService.getFiltroUbicacionP(ubicaciones).subscribe(
+          response => {
+            if (response.resultado)
+              this.tierras = response.resultado;
+              console.log(this.tierras);
+          },
+          error => {
+            console.log(<any>error);
+          }
+        );
+      }
+    }
+
+  }
+
+  sortPMinMax(){
+    this.sortPrecMinMax(this.tierras);
+  }
+
+  sortPMaxMin(){
+    this.sortPrecMaxMin(this.tierras);
+  }
+
+  sortAMaxMin(){
+    this.sortArMaxMin(this.tierras);
+  }
+
+  sortAMinMax(){
+    this.sortArMinMax(this.tierras);
+  }
+
 
   getTierraPromocion(){
     
@@ -113,5 +185,7 @@ export class PromocionesComponent implements OnInit {
       }
     );
   }
+
+
 
 }
