@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../shared/user.service';
+import { User } from '../../models/user.model';
+import { FooterComponent } from '../footer/footer.component';
+
 @Component({
   selector: 'app-cuenta',
   templateUrl: './cuenta.component.html',
@@ -7,6 +11,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class CuentaComponent implements OnInit {
   profile: any;
+  user: User = new User();
   info: any = {
     Contratos: 0,
     Terrenos: 0,
@@ -39,7 +44,10 @@ export class CuentaComponent implements OnInit {
     ],
     Correo: 'Correo_Persona_Empresa',
   };
-  constructor(public _authService: AuthService) {
+  constructor(
+    public _authService: AuthService,
+    private _userService: UserService
+    ) {
 
    }
 
@@ -52,5 +60,35 @@ export class CuentaComponent implements OnInit {
     //   });
     // }
     // console.log(this.profile);
+    this._userService.getUserProfile().subscribe(
+      res => {
+        this.user = res['Usuario'];
+        if (this.user.fotoperfil == null){
+          this.user.fotoperfil = "usericon.png"
+        }
+        // this.user.apellido = res['apellido'];
+        // this.user.email = res['email'];
+        // this.user.visibilidad = res['visibilidad'];
+        // this.user.rfc = res['rfc'];
+        // this.user.calle = res['calle'];
+        // this.user.colonia = res['colonia'];
+        // this.user.num = res['num'];
+        // this.user.tel1 = res['tel1'];
+        // this.user.tel2 = res['tel2'];
+        // this.user.pais = res['pais'];
+        // this.user.estado = res['estado'];
+        // this.user.ciudad = res['ciudad'];
+        // this.user.fotoperfil = res['fotoperfil'];
+        // this.user.contratos = res['contratos'];
+        // this.user.tierras = res['tierras'];
+        // this.user.rentas = res['rentas'];
+        // this.user.eventos = res['eventos'];   
+        console.log(res);  
+        console.log(this.user);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }

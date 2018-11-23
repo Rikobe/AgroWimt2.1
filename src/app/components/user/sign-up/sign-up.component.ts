@@ -22,7 +22,6 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log("hola1");
     this.userService.postUser(form.value).subscribe(
       res => {
         this.showSucessMessage = true;
@@ -49,7 +48,21 @@ export class SignUpComponent implements OnInit {
       visibilidad: '',
       email: '',
       password: '',
-      fecharegistro: ''
+      fecharegistro: '',
+      fotoperfil:'',
+      rfc: '',
+      calle: '',
+      colonia: '',
+      num: '',
+      tel1: '',
+      tel2: '',
+      pais: '',
+      estado: '',
+      ciudad: '',
+      contratos: 0,
+      tierras: 0,
+      rentas: 0,
+      eventos: 0,
     };
     form.resetForm();
     this.serverErrorMessages = '';

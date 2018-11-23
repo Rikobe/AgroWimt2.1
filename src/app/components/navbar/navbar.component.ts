@@ -23,6 +23,9 @@ export class NavbarComponent implements OnInit {
     ) { 
     this._navBarService.navState$.subscribe((state)=>this.loggeado = state);
     // _authService.handleAuthentication();   
+    if(this._userService.getToken()){
+      this.loggeado = true;
+    }
   }
 
   ngOnInit() {

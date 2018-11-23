@@ -9,13 +9,27 @@ import { Register } from '../models/register.model';
   providedIn: 'root'
 })
 export class UserService {
-  selectedUser: Register = {
+  selectedUser: User = {
     nombre: '',
     apellido: '',
     visibilidad: '',
     email: '',
     password: '',
-    fecharegistro: ''
+    fecharegistro: '',
+    fotoperfil:'',
+    rfc: '',
+    calle: '',
+    colonia: '',
+    num: '',
+    tel1: '',
+    tel2: '',
+    pais: '',
+    estado: '',
+    ciudad: '',
+    contratos: 0,
+    tierras: 0,
+    rentas: 0,
+    eventos: 0,
   };
   url: String = Global.url;
   noAuthHeader = { headers: new HttpHeaders({ 'NoAuth': 'True' }) };
@@ -26,6 +40,7 @@ export class UserService {
 
   postUser(user: User){
     user.fecharegistro = new Date().toLocaleString();
+    console.log(user);
     return this.http.post(this.url+'registrarse',user,this.noAuthHeader);
   }
 
@@ -34,7 +49,7 @@ export class UserService {
   }
 
   getUserProfile() {
-    return this.http.get(this.url + 'cuenta');
+    return this.http.get(this.url + 'perfil');
   }
 
 

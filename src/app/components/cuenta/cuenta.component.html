@@ -2,62 +2,121 @@
   
 </head>
 <body style="padding-right: 0px; padding-right: 15px;">
-  <div class="row" style="background-color:dimgray;">
+  <div class="row" style="background-color:white;">
     <!--Barrita de al lado-->
-    <div class="col-2" style="padding: 15px;">
-        <div style="margin-left: 15px; background-color: blue; border-style: solid; border-width: 5px; border-color: black;">
-          <h4>Perfil</h4>
-        </div>
-        <div style="margin-left: 15px; background-color: gray; border-style: solid; border-width: 5px; border-color: black;">
-          <h4>Tierras</h4>
-        </div>
-        <div style="margin-left: 15px; background-color: gray; border-style: solid; border-width: 5px; border-color: black;">
-          <h4>Contratos</h4>
-        </div>
-        <div style="margin-left: 15px; background-color: gray; border-style: solid; border-width: 5px; border-color: black;">
-          <h4>Historial</h4>
-        </div>
-        <div style="margin-left: 15px; background-color: gray; border-style: solid; border-width: 5px; border-color: black;">
-          <h4>Recursos</h4>
-        </div>
-    </div>
+    <div class="col-md-2">
+      <div role="tablist" id="accordion-1">
+          <div class="card">
+              <div class="card-header" role="tab">
+                  <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="true" aria-controls="accordion-1 .item-1" href="div#accordion-1 .item-1" [routerLink]="['/cuenta']">Perfil</a></h5>
+              </div>
+              <div class="collapse show item-1" role="tabpanel" data-parent="#accordion-1">
+                  <div class="card-body">
+                      <p class="card-text">Modificar perfil</p>
+                  </div>
+              </div>
+          </div>
+          <div class="card">
+              <div class="card-header" role="tab">
+                  <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-2" href="div#accordion-1 .item-2">Tierras</a></h5>
+              </div>
+              <div class="collapse item-2" role="tabpanel" data-parent="#accordion-1">
+                  <div class="card-body">
+                      <p class="card-text" [routerLink]="['/agregartierra']">Agregar tierra</p>
+                  </div>
+              </div>
+              <div class="collapse item-2" role="tabpanel" data-parent="#accordion-1">
+                <div class="card-body">
+                    <p class="card-text">Modificar tierra</p>
+                </div>
+              </div>
+          </div>
+          <div class="card">
+              <div class="card-header" role="tab">
+                  <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-3" href="div#accordion-1 .item-3">Contratos</a></h5>
+              </div>
+              <div class="collapse item-3" role="tabpanel" data-parent="#accordion-1">
+                  <div class="card-body">
+                      <p class="card-text">Agregar contratos</p>
+                  </div>
+              </div>
+              <div class="collapse item-3" role="tabpanel" data-parent="#accordion-1">
+                <div class="card-body">
+                    <p class="card-text">Modificar contratos</p>
+                </div>
+            </div>
+          </div>
+          <div class="card">
+              <div class="card-header" role="tab">
+                  <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-4" href="div#accordion-1 .item-4">Eventos</a></h5>
+              </div>
+              <div class="collapse item-4" role="tabpanel" data-parent="#accordion-1">
+                  <div class="card-body">
+                      <p class="card-text">Agregar evento</p>
+                  </div>
+              </div>
+              <div class="collapse item-4" role="tabpanel" data-parent="#accordion-1">
+                <div class="card-body">
+                    <p class="card-text">Modificar evento</p>
+                </div>
+              </div>
+              <div class="collapse item-4" role="tabpanel" data-parent="#accordion-1">
+                <div class="card-body">
+                    <p class="card-text">Actualizar evento</p>
+                </div>
+              </div>
+
+          </div>
+          <div class="card">
+              <div class="card-header" role="tab">
+                  <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-5" href="div#accordion-1 .item-5">Recursos</a></h5>
+              </div>
+          </div>
+      </div>
+  </div>
     <div class="col-10">
       <!--Contenido del perfil-->
       <div class="row">
         <div class="col-2" style="padding: 15px;">
-          <img src="{{profile?.picture}}" height="180px" width="180px">
+          <img src="../../../assets/img/{{user.fotoperfil}}" height="180px" width="180px">
         </div>
         <div class="col-5">
-          <h1>{{profile?.name}}</h1>
-          <h4>Perfil (público/privado)  <img style="border-radius: 5px; border-style: solid; border-width: 2px; border-color: black;" height="23px" width="23px" src="https://icon-icons.com/icons2/906/PNG/32/pencil_icon-icons.com_69999.png"></h4>
+          <h1>{{user.nombre}}</h1>
+          <h4>Perfil ({{user.visibilidad}})  <img style="border-radius: 5px; border-style: solid; border-width: 2px; border-color: black;" height="23px" width="23px" src="https://icon-icons.com/icons2/906/PNG/32/pencil_icon-icons.com_69999.png"></h4>
         </div>
         <div class="col-4"></div>
         <div class="col-6">
           <h3>Información del usuario</h3>
           <div class="row" style="border-style: solid; border-width: 3px; border-color: black; background-color: white;">
             <div class="col-6">
-              <h6>Nombre: {{usuario.Nombre}}</h6>
+              <h6>Nombre:</h6>
+              <h6>{{user.nombre}} {{user.apellido}}</h6>
               <br>
-              <h6>RFC: {{usuario.RFC}}</h6>
+              <h6>RFC:</h6>
+              <h6>{{user.rfc}}</h6>
               <br>
-              <h6>Calle: {{usuario.Calle}}</h6>
+              <h6>Calle:</h6>
+              <h6>{{user.calle}}</h6>
               <br>
-              <h6>Colonia: {{usuario.Colonia}}</h6>
+              <h6>Colonia:</h6>
+              <h6>{{user.colonia}}</h6>
               <br>
-              <h6>Número: {{usuario.Numero}}</h6>
+              <h6>Número:</h6>
+              <h6>{{user.num}}</h6>
             </div>
             <div class="col-6">
               <h6>Teléfonos:</h6>
-              <h6 *ngFor="let tel of usuario.Telefonos">{{tel}}</h6>
+              <h6>{{user.tel1}}</h6>
+              <h6>{{user.tel2}}</h6>
               <br>
               <h6>Correo:</h6>
-              <h6>{{usuario.Correo}}</h6>
+              <h6>{{user.email}}</h6>
             </div>
           </div>
         </div>
         <div class="col-5">
           <div>
-            <h3>Información de cuenta</h3>
+            <h3>Información de la cuenta</h3>
             <div style="background-color: white; ">
                 <table class="table table-hover">
                     <thead>
@@ -70,10 +129,10 @@
                     </thead>
                     <tbody>
                       <tr class="table-secondary">
-                        <td>{{info.Contratos}}</td>
-                        <td>{{info.Terrenos}}</td>
-                        <td>{{info.Rentas}}</td>
-                        <td>{{info.Eventos}}</td>
+                        <td>{{user.contratos}}</td>
+                        <td>{{user.tierras}}</td>
+                        <td>{{user.rentas}}</td>
+                        <td>{{user.eventos}}</td>
                       </tr>
                     </tbody>
                   </table> 

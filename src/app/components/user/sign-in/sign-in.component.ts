@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { NavBarServiceService } from '../../../services/nav-bar-service.service';
 
 import { UserService } from '../../../shared/user.service';
+import { DataTransferService } from '../../../services/data-transfer.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -15,7 +16,8 @@ export class SignInComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router : Router, 
-    private _navBarService: NavBarServiceService) { }
+    private _navBarService: NavBarServiceService,
+    private _dataTransfer: DataTransferService) { }
 
   model ={
     email :'',
@@ -31,6 +33,8 @@ export class SignInComponent implements OnInit {
     this.userService.login(form.value).subscribe(
       res => {
         this.userService.setToken(res['token']);
+        this._dataTransfer.someDataChanges(form.value.email);
+        window.location.reload();
         this.router.navigateByUrl('/');
       },
       err => {
