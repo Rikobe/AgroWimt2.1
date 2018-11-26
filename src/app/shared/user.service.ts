@@ -59,6 +59,22 @@ export class UserService {
     localStorage.setItem('token', token);
   }
 
+  getId() {
+    var token = this.getToken();
+    if (token) {
+      var id = atob(token.split('.')[1]);
+      return JSON.parse(id);
+    }
+    else
+      return null;
+  }
+
+  setId() {
+    var id = this.getId();
+    if (id)
+      localStorage.setItem('idus', id._id);
+  }
+
   getToken() {
     return localStorage.getItem('token');
   }

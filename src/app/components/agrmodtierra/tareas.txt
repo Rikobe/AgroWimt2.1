@@ -1,0 +1,21 @@
+- Modificar perfil de usuario
+
+- ABC Tierra
+- ABC Eventos
+- ABC Recursos
+- ABC Contratos
+
+- Solicitudes de tierras
+- Aceptar/Rechazar Solicitudes
+- Proceso de renta.
+- Perfil de la tierra.
+- Perfil del usuario (publico)
+
+styles
+"./node_modules/bootstrap/dist/css/bootstrap.min.css"
+
+scripts
+
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/popper.js/dist/umd/popper.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"

@@ -14,20 +14,20 @@
   </div>
   <input type="text" #visibilidad="ngModel" [(ngModel)]="userService.selectedUser.visibilidad" name="visibilidad" placeholder="Perfil"
   required  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !visibilidad.valid }">
-  <div *ngIf="signUpForm.submitted && !visibilidad.valid">a
+  <div *ngIf="signUpForm.submitted && !visibilidad.valid">
     <label class="validation-message">Campo visibilidad requerido.</label>
   </div>
   <input type="text" #email="ngModel" [(ngModel)]="userService.selectedUser.email" name="email" placeholder="Email"
   required [pattern]="emailRegex"  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !email.valid }">
   <div *ngIf="signUpForm.submitted && email.errors">
-    <label *ngIf="email.errors.required" class="validation-message">This field is required.</label>
-    <label *ngIf="email.errors.pattern" class="validation-message">Invalid email address.</label>
+    <label *ngIf="email.errors.required" class="validation-message">Este campo es obligatorio.</label>
+    <label *ngIf="email.errors.pattern" class="validation-message">Email inválido.</label>
   </div>
   <input type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password" placeholder="Password"
   minlength="4" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !password.valid }">
   <div *ngIf="signUpForm.submitted && password.errors">
-    <label *ngIf="password.errors.required" class="validation-message">This field is required.</label>
-    <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 4 characters.</label>
+    <label *ngIf="password.errors.required" class="validation-message">Este campo es obligatorio.</label>
+    <label *ngIf="password.errors.minlength" class="validation-message">La contraseña debe contener al menos 4 caracteres.</label>
   </div>
   <!-- <label #fecha="ngModel" [(ngModel)]="userService.selectedUser.fecharegistro" name="fecharegistro" hidden></label> -->
   <input type="submit" value="Registrarse">
@@ -35,7 +35,7 @@
 
 <!-- Success message -->
 <div class="success" *ngIf="showSucessMessage">
-  Saved successfully
+  Se ha registrado correctamente
 </div>
 
 <!-- Error message -->

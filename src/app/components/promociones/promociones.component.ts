@@ -60,6 +60,7 @@ export class PromocionesComponent implements OnInit {
     {nombre: 'Aguacate'},
     {nombre: 'Arroz'},
     {nombre: 'Papa'},
+    {nombre: 'Ajonjoli'}
   ];
   estaciones = [
     {nombre: 'Primavera'},

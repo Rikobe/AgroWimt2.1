@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -55,7 +57,9 @@ import { UserService } from './shared/user.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    HttpModule,
+    FormsModule,
+    AgmCoreModule.forRoot({apiKey: 'AIzaSyBSKNno0k2uTLczSQL08pRkCYN_Q419-hg'})
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

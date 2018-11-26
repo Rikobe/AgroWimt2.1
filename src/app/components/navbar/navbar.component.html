@@ -30,7 +30,7 @@
         <input class="form-control" type="text" placeholder="Buscar..." #buscarInput>
         <button class="ml-1 btn btn-md btn-outline-primary" routerLink="/search" (click)="buscar(buscarInput)" type="submit"><i class="fa fa-search"></i></button>
     </form>
-    <hr *ngIf="!loggeado">
+    <hr>
     <a [routerLink]="['/cuenta']" *ngIf="loggeado" class="btn btn-light ml-1 mr-1"><i class="fas fa-user"></i></a>
     <button [routerLink]="['/login']" *ngIf="!loggeado" class="btn btn-md btn-primary" style="margin-right: 2%">Iniciar Sesion</button>
     <button [routerLink]="['/registrarse']" *ngIf="!loggeado" class="btn btn-md btn-success">Registrarse</button>

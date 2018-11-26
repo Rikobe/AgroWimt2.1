@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+import { UserService } from '../../shared/user.service';
 
 @Component({
   selector: 'app-agrmodrecursos',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgrmodrecursosComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private userService: UserService,
+    private router : Router
+  ) { }
 
   ngOnInit() {
+    // if(this.userService.isLoggedIn())
+    //   this.router.navigateByUrl('/agregartierra');
+    // else
+    //   this.router.navigateByUrl('/login');
   }
 
 }

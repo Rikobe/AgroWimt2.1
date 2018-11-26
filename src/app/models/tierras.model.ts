@@ -1,6 +1,7 @@
 export class Tierra{
      constructor(
      ){}
+     public _id: String;
      public idowner: String;
         public titulo: String;
         public imagen: String;

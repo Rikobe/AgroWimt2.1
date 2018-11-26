@@ -59,6 +59,7 @@ export class MasvendidoComponent implements OnInit {
     {nombre: 'Aguacate'},
     {nombre: 'Arroz'},
     {nombre: 'Papa'},
+    {nombre: 'Ajonjolí'}
   ];
   
   constructor(
