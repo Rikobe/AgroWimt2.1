@@ -34,27 +34,32 @@ export class TierrasService {
     return this._http.get(this.url+'getTierras/'+tierra.idowner, {headers:headers});
   }
 
-  getTierraPromocion(): Observable<any> {
+  getTierraPromocion(limite): Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this._http.get(this.url+'getTierraPromocion', {headers:headers});
+    return this._http.get(this.url+'getTierraPromocion/'+limite, {headers:headers});
+  }
+//
+  getTierraTop(limite): Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.get(this.url+'getTierrasTop/'+limite, {headers:headers});
   }
 
-  getTierraTop(): Observable<any> {
-    let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this._http.get(this.url+'getTierraTop', {headers:headers});
-  }
-
-  getFiltroUbicacionP(ubicaciones: String): Observable<any> {
+  getFiltroUbicacionP(ubicaciones: String, limite): Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this._http.get(this.url+'getFiltroUbicacionP/'+ubicaciones, {headers:headers});
   }
-
-  getFiltroUbicacionT(ubicaciones: String): Observable<any> {
+//
+  getFiltroUbicacionT(ubicaciones: String, limite): Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this._http.get(this.url+'getFiltroUbicacionT/'+ubicaciones, {headers:headers});
+    return this._http.get(this.url+'getFiltroUbicacionT/'+ubicaciones+'/'+limite, {headers:headers});
   }
 
-  getBusqueda(busqueda:String): Observable<any> {
+  getFiltroUbicacionB(ubicaciones: String, limite): Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.get(this.url+'getFiltroUbicacionB/'+ubicaciones+'/'+limite, {headers:headers});
+  }
+
+  getBusqueda(busqueda:String, limite): Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this._http.get(this.url+'getBusqueda/'+busqueda, {headers:headers});
   }
@@ -66,16 +71,32 @@ export class TierrasService {
 
   getTierrasOwner(idowner: String): Observable<any> {
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    console.log(this.url+'getTierras/'+idowner);
+    //console.log(this.url+'getTierras/'+idowner);
     return this._http.get(this.url+'getTierras/'+idowner, {headers: headers});
   }
 
+  getTierrasEvento(idowner:String): Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.get(this.url+'getTierrasEvento/'+idowner, {headers: headers});
+  }
+
   updateTierra(tierra): Observable<any> {
+    // console.log(tierra);
     let params = JSON.stringify(tierra);
-    console.log(params);
+    //console.log(params);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this._http.put(this.url+'updateTierra/'+tierra._id, params, {headers:headers});
   }
+
+  getInfotierra(id: String): Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.get(this.url+'getInfoTierra/'+id, {headers:headers});
+  }
+
+  deleteTierra(id): Observable<any> {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.delete(this.url+'deleteTierra/'+id, {headers:headers});
+  } 
 
   //Help Methods
 

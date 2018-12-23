@@ -4,6 +4,7 @@ import { DataTransferService } from '../../services/data-transfer.service';
 import { Tierra } from '../../models/tierras.model';
 import { Global } from '../../services/global';
 import { AuthService} from '../../services/auth.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-promociones',
@@ -15,6 +16,9 @@ export class PromocionesComponent implements OnInit {
   public tierras : Tierra[];
   public preciodesc : Number;
   public url : String = Global.url;
+  elemento;
+  ventana;
+  indice = 5;
   ubicacion: String[] = [];
   sortPrecMinMax: any; 
   sortPrecMaxMin: any;
@@ -72,7 +76,8 @@ export class PromocionesComponent implements OnInit {
   constructor(
     private _tierraService: TierrasService, 
     private _dataTransfer: DataTransferService, 
-    private _authService:AuthService
+    private _authService:AuthService,
+    private router: Router
   ) {
 
     this.sortPrecMinMax = (tierra: Tierra[]) =>
@@ -119,7 +124,7 @@ export class PromocionesComponent implements OnInit {
 
       ubicaciones = this.ubicacion.toString();
 
-      this._tierraService.getFiltroUbicacionP(ubicaciones).subscribe(
+      this._tierraService.getFiltroUbicacionP(ubicaciones,this.indice).subscribe(
         response => {
           if (response.resultado)
             this.tierras = response.resultado;
@@ -142,7 +147,7 @@ export class PromocionesComponent implements OnInit {
       if (ubicaciones == "")
         this.getTierraPromocion();
       else{
-        this._tierraService.getFiltroUbicacionP(ubicaciones).subscribe(
+        this._tierraService.getFiltroUbicacionP(ubicaciones,this.indice).subscribe(
           response => {
             if (response.resultado)
               this.tierras = response.resultado;
@@ -173,10 +178,21 @@ export class PromocionesComponent implements OnInit {
     this.sortArMinMax(this.tierras);
   }
 
+  Scroll(event){
+    const top = this.elemento.pageYOffset;
+
+    const height =  this.ventana.offsetHeight-103;
+
+    if (top > height - 30) {
+      this.indice = this.indice + 5;
+      this.getTierraPromocion();
+    }
+  }
+
 
   getTierraPromocion(){
     
-    this._tierraService.getTierraPromocion().subscribe(
+    this._tierraService.getTierraPromocion(this.indice).subscribe(
       response => {
         if (response.resultado)
           this.tierras = response.resultado;
@@ -185,6 +201,11 @@ export class PromocionesComponent implements OnInit {
         console.log(<any>error);
       }
     );
+  }
+
+  gototierra(_id:any){
+    this._dataTransfer.someDataChanges(_id);
+    this.router.navigateByUrl('/perfiltierra');
   }
 
 

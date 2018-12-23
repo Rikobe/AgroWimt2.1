@@ -6,6 +6,7 @@ export class User {
     public email: String;
     public password: String;
     public visibilidad: String;
+    public balance: number;
     public rfc: String;
     public calle: String;
     public colonia: String;
@@ -16,9 +17,9 @@ export class User {
     public estado: String;
     public ciudad: String;
     public fotoperfil: String;
-    public contratos: Number;
-    public tierras: Number;
-    public rentas: Number;
-    public eventos: Number;
+    public contratos: number;
+    public tierras: number;
+    public rentas: number;
+    public eventos: number;
     public fecharegistro: String;
 }

@@ -1,8 +1,92 @@
-<div class = "row">
-  <div class = "col col-lg-4 col-sm-12 col-xs-12">
-    <a><img (click)="gototierra(tierra._id)" [routerLink]="['/perfiltierra']" class="card-img-top" src="http://placehold.it/700x500" alt=""></a>
+<div class="container">
+  <div class = "row" style="margin-top: 5%" >
+    <div class="col-md-4" >
+        <a><img style="width:300px;" (click)="gototierra(tierra._id)" class="card-img-top" src="{{url+'getFotoTierra/'+tierra.imagen}}" alt=""></a>
+    </div>
+    <div class="col-md-6">
+        <h2>{{tierra.titulo}}</h2>
+        <br>
+        <h4>{{tierra.ciudad}}</h4>
+        <br>
+        <h4>${{tierra.precio}}</h4>
+        <br>
+        <h4>{{tierra.area}}m2</h4>
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-success" (click)="openSolicitar(content)" type="button" value="solicitar">Solicitar Renta</button>
+      <div *ngIf="solicitados" style="margin-top:15px;"><h5 style="color:green">Se ha realizado la solicitud correctamente.</h5></div>
+      <div *ngIf="solicitadob" style="margin-top:15px;"><h5 style="color:red">{{solicitadob}}</h5></div>
+    </div>
   </div>
-  <div class = "col col-lg-8 col-sm-12 col-xs-12">
-    
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+      <h4>Información de la tierra</h4>
+      <hr>
+      <div class="row" style="margin-bottom: 5px;">
+        <div class="col-md-4">Propietario: </div>
+        <div class="col-md-4">{{user.nombre}} {{user.apellido}}</div>
+      </div>
+      <div class="row" style="margin-bottom: 5px;">
+        <div class="col-md-4">Contacto: </div>
+        <div class="col-md-4">{{user.email}}</div>
+      </div>
+      <div class="row" style="margin-bottom: 5px;">
+        <div class="col-md-4">Tipo de cultivo: </div>
+        <div class="col-md-4">{{tierra.tipocultivo}}</div>
+      </div>
+      <div class="row" style="margin-bottom: 5px;">
+        <div class="col-md-4">Calidad: </div>
+        <div class="col-md-4">{{tierra.calidadtierra}}</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Descripción</h4>
+      <hr>
+      <div class="row">
+        <div class="col-md-6">
+          {{tierra.descripcion}}
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<ng-template #content let-modal data-backdrop="static" data-keyboard="false">
+    <div class="modal-header">
+        <h4 class="modal-title">Solicitar tierra</h4>
+        
+    </div>
+    <div class="modal-body">
+        
+            <div class="row">
+                <div class="col-md-6">
+                  <h5>Fecha de inicio</h5>
+                  <input type="date" [ngModel] ="contratacion.fechainicio | date:'yyyy-MM-dd'" (ngModelChange)="contratacion.fechainicio = $event">
+                </div>
+                <div class="col-md-6">
+                  <h5>Fecha de finalización</h5>
+                  <input type="date" [ngModel] ="contratacion.fechafin | date:'yyyy-MM-dd'" (ngModelChange)="contratacion.fechafin = $event">
+
+                </div>
+              </div>
+        
+    </div>
+    <div class="modal-footer">
+        <button type="submit" (click)="modal.close('Close click'); solicitarTierra();" class="btn btn-primary">Aceptar</button>
+        <button type="button" (click)="modal.close('Close click');" class="btn btn-danger">Cancelar</button>    
+    </div>
+
+</ng-template>
+<ng-template #uso let-modal data-backdrop="static" data-keyboard="false">
+        <div class="modal-header">
+            <h4 class="modal-title">{{usoTitle}}</h4>
+            
+        </div>
+        <div class="modal-body">
+            <p>{{usoDesc}}</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" (click)="modal.close('Close click');" class="btn btn-info">Aceptar</button>
+        </div>
+</ng-template>

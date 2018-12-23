@@ -1,113 +1,199 @@
-<div>
-  <div class="container">
-      <div class="row">
-          <div class="col-md-4">
-              <div role="tablist" id="accordion-1">
-                  <div class="card">
-                      <div class="card-header" role="tab">
-                          <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="true" aria-controls="accordion-1 .item-1" href="div#accordion-1 .item-1">PERFIL</a></h5>
-                      </div>
-                      <div class="collapse show item-1" role="tabpanel" data-parent="#accordion-1">
+<head>
+  
+</head>
+<body style="padding-right: 0px; padding-right: 15px;">
+    <div class="row" style="background-color:white;">
+      <!--Barrita de al lado-->
+      <div class="col-md-2">
+            <div role="tablist" id="accordion-1">
+                <div class="card">
+                    <div class="card-header" role="tab">
+                        <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="true" aria-controls="accordion-1 .item-1" href="div#accordion-1 .item-1" >Perfil</a></h5>
+                    </div>
+                    <div class="collapse show item-1" [routerLink]="['/cuenta']" role="tabpanel" data-parent="#accordion-1">
                           <div class="card-body">
-                              <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                            <a href="javascript:void(0);"><p class="card-text">Mi perfil</p></a>
+                          </div>
+                    </div>
+                    <div class="collapse show item-1" [routerLink]="['/modificarperfil']" role="tabpanel" data-parent="#accordion-1">
+                        <div class="card-body">
+                           <a href="javascript:void(0);"><p class="card-text">Modificar perfil</p></a> 
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" role="tab">
+                        <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-2" href="div#accordion-1 .item-2">Tierras</a></h5>
+                    </div>
+                    <div class="collapse item-2" [routerLink]="['/agregartierra']" role="tabpanel" data-parent="#accordion-1">
+                        <div class="card-body">
+                          <a href="javascript:void(0);"><p class="card-text">Mis tierras</p></a> 
+                        </div>
+                    </div>
+                    <div class="collapse item-2" role="tabpanel" data-parent="#accordion-1">
+                      <div class="card-body">
+                          <a href="javascript:void(0);"><p class="card-text">Tierras rentadas</p></a> 
+                      </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" role="tab">
+                        <h5 class="mb-0"><a data-toggle="collapse" [routerLink]="['/contratos']" aria-expanded="false" aria-controls="accordion-1 .item-3" href="div#accordion-1 .item-3">Contratos</a></h5>
+                    </div>
+                    <!-- <div class="collapse item-3" role="tabpanel" data-parent="#accordion-1">
+                        <div class="card-body">
+                            <p class="card-text">Agregar contratos</p>
+                        </div>
+                    </div>
+                    <div class="collapse item-3" role="tabpanel" data-parent="#accordion-1">
+                      <div class="card-body">
+                          <p class="card-text">Modificar contratos</p>
+                      </div>
+                  </div> -->
+                </div>
+                <div class="card">
+                    <div class="card-header" role="tab">
+                        <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-4" href="div#accordion-1 .item-4">Eventos</a></h5>
+                    </div>
+                    <div class="collapse item-4" [routerLink]="['/addevento']" role="tabpanel" data-parent="#accordion-1">
+                        <div class="card-body">
+                              <a href="javascript:void(0);"><p class="card-text">Nuevo evento</p></a> 
+                        </div>
+                    </div>
+                    <!-- <div class="collapse item-4" role="tabpanel" data-parent="#accordion-1">
+                      <div class="card-body">
+                          <p class="card-text">Modificar evento</p>
+                      </div>
+                    </div> -->
+                    <div class="collapse item-4" [routerLink]="['/adminevento']" role="tabpanel" data-parent="#accordion-1">
+                      <div class="card-body">
+                              <a href="javascript:void(0);"><p class="card-text">Administrar evento</p></a> 
+                      </div>
+                    </div>
+      
+                </div>
+                
+                <div class="card">
+                    <div class="card-header" role="tab">
+                        <h5 class="mb-0"><a data-toggle="collapse" [routerLink]="['/administrarrecursos']" aria-expanded="false" aria-controls="accordion-1 .item-5" href="div#accordion-1 .item-5">Recursos</a></h5>
+                    </div>
+                </div>
+      
+                <div class="card">
+                      <div class="card-header" role="tab">
+                          <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-6" href="div#accordion-1 .item-6">Solicitudes</a></h5>
+                      </div>
+                      <div class="collapse item-6" [routerLink]="['/misolicitudes']" role="tabpanel" data-parent="#accordion-1">
+                          <div class="card-body">
+                                  <a href="javascript:void(0);"><p class="card-text">Mis solicitudes</p></a> 
                           </div>
                       </div>
+                      <div class="collapse item-6" [routerLink]="['/solicitudes']" role="tabpanel" data-parent="#accordion-1">
+                        <div class="card-body">
+                              <a href="javascript:void(0);"><p class="card-text">Solicitudes</p></a>
+                        </div>
+                      </div>  
                   </div>
-                  <div class="card">
-                      <div class="card-header" role="tab">
-                          <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-2" href="div#accordion-1 .item-2">TIEMPOS</a></h5>
-                      </div>
-                      <div class="collapse item-2" role="tabpanel" data-parent="#accordion-1">
-                          <div class="card-body">
-                              <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="card">
-                      <div class="card-header" role="tab">
-                          <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-3" href="div#accordion-1 .item-3">CONTRATOS</a></h5>
-                      </div>
-                      <div class="collapse item-3" role="tabpanel" data-parent="#accordion-1">
-                          <div class="card-body">
-                              <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="card">
-                      <div class="card-header" role="tab">
-                          <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-4" href="div#accordion-1 .item-4">HISTORIAL</a></h5>
-                      </div>
-                      <div class="collapse item-4" role="tabpanel" data-parent="#accordion-1">
-                          <div class="card-body">
-                              <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="card">
-                      <div class="card-header" role="tab">
-                          <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-5" href="div#accordion-1 .item-5">RECURSOS</a></h5>
-                      </div>
-                      <div class="collapse item-5" role="tabpanel" data-parent="#accordion-1">
-                          <div class="card-body">
-                              <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="col-md-4"><img>
-              <div>
-                  <h1 style="font-size:30px;">Titulo de tierra<i class="fa fa-file-text float-left"></i></h1>
-              </div>
-              <div><textarea></textarea></div>
-          </div>
-          <div class="col-md-4">
-              <div class="table-responsive">
-                  <table class="table">
-                      <thead>
-                          <tr>
-                              <th>Fecha inicio</th>
-                              <th>01/11/2018</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr>
-                              <td>Cell 1</td>
-                              <td>Cell 2</td>
-                          </tr>
-                          <tr>
-                              <td>Cell 3</td>
-                              <td>Cell 4</td>
-                          </tr>
-                      </tbody>
-                  </table>
-              </div><iframe allowfullscreen="" frameborder="0" width="100%" height="400" src="https://www.google.com/maps/embed/v1/place?q=Paris%2C+France&amp;zoom=11"></iframe></div>
-      </div>
-  </div>
-  <div>
-      <h1>Gastos</h1>
-      <div class="table-responsive">
-          <table class="table">
-              <thead>
-                  <tr>
-                      <th>Producto</th>
-                      <th>Cantidad</th>
-                      <th>Costo unitario</th>
-                      <th>total</th>
-                      <th>fecha gasto</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <tr>
-                      <td>Cell 1</td>
-                      <td>Cell 2</td>
-                  </tr>
-                  <tr>
-                      <td>Cell 3</td>
-                      <td>Cell 4</td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
-  </div>
-</div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <h4>Nuevo evento</h4>
+            <h5><strong>Tierras disponbles</strong></h5>
+            <div class="card">
+                <div *ngFor="let tierra of (tierras)">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <img src="{{url+'getfotoTierra/'+tierra.imagen}}" width="80px">
+                        </div>
+                        <div class="col-md-7" style="margin-top:4px;">
+                            <a href="javascript:void(0);" (click)="setTituloValue(tierra)"><strong>{{tierra.titulo}}</strong></a>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8 card" style="margin-top:40px;">
+            <form #addEventoForm="ngForm" (ngSubmit)="addEventoForm.valid && tituloTierra && onSubmit(addEventoForm)">
+                <div class="row" style="margin-top:5px;">
+                    <div class="col-md-4">
+                        <div><h5 for="titulo">Título del evento</h5></div>
+                        <input class="form-control form-control-sm" type="text" name="titulo" #titulo="ngModel" [(ngModel)]="evento.titulo" 
+                        style="width: 250px" required  [ngClass]="{'invalid-textbox':addEventoForm.submitted && !titulo.valid}">
+                        <div *ngIf="addEventoForm.submitted && !titulo.valid">
+                                <label class="validation-message">Campo título requerido.</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div><h5 for="idtierra">Tierra</h5></div>
+                        <input class="form-control form-control-sm" type="text" name="idtierra" #idtierra="ngModel" 
+                        [(ngModel)]="evento.idtierra" style="width: 250px" hidden>
+                        <input class="form-control form-control-sm" type="text"  value="{{tituloTierra}}" style="width: 250px"  disabled >
+                        <div *ngIf="addEventoForm.submitted && !tituloTierra">
+                             <label class="validation-message">Debe elegir una tierra.</label>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Fecha de inicio</h5>
+                        <input type="date" name="inicio" #inicio="ngModel"
+                        [(ngModel)]="evento.inicio"
+                        required  [ngClass]="{'invalid-textbox':addEventoForm.submitted && !inicio.valid}">
+                        <div *ngIf="addEventoForm.submitted && !inicio.valid">
+                            <label class="validation-message">Campo fecha de inicio requerido.</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Fecha de finalización</h5>
+                        <input type="date" name="fin" #fin="ngModel"
+                        [(ngModel)]="evento.fin"
+                        required  [ngClass]="{'invalid-textbox':addEventoForm.submitted && !fin.valid}">
+                        <div *ngIf="addEventoForm.submitted && !fin.valid">
+                            <label class="validation-message">Campo fecha de fin requerido.</label>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Tipo de cultivo</h5>
+                        <select class="form-control" style="width: 150px" name="tipocultivo" #tipocultivo="ngModel" [(ngModel)]="evento.tipocultivo" required  [ngClass]="{'invalid-textbox':addEventoForm.submitted && !tipocultivo.valid}">
+                            <option [value]="cultiv.tipo" *ngFor="let cultiv of tipcultivo">{{cultiv.tipo}}</option>
+                        </select >
+                        <div *ngIf="addEventoForm.submitted && !tipocultivo.valid">
+                                <label class="validation-message">Campo tipo de cultivo requerido.</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Tipo de ciclo</h5>
+                        <select class="form-control" style="width: 150px" name="tipociclo" #tipociclo="ngModel" [(ngModel)]="evento.tipociclo" required  [ngClass]="{'invalid-textbox':addEventoForm.submitted && !tipociclo.valid}">
+                            <option [value]="ciclo.tipo" *ngFor="let ciclo of typeciclo">{{ciclo.tipo}}</option>
+                        </select >
+                        <div *ngIf="addEventoForm.submitted && !tipocultivo.valid">
+                            <label class="validation-message">Campo tipo de ciclo requerido.</label>
+                        </div>
+                    </div>
+
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="success" *ngIf="showSucessMessage">
+                            Se ha registrado correctamente
+                        </div>
+                                    
+                                    <!-- Error message -->
+                        <div class="alert" *ngIf="serverErrorMessages">
+                            {{serverErrorMessages}}
+                        </div>
+                        <button class="btn btn-primary" type="submit" value="registrar">Aceptar</button>
+                    </div>               
+                </div>
+
+            </form>
+        </div>
+    </div>
+</body>

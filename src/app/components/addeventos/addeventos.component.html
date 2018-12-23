@@ -1,0 +1,231 @@
+<head>
+  
+  </head>
+  <body style="padding-right: 0px; padding-right: 15px;">
+    <div class="row" style="background-color:white;">
+      <!--Barrita de al lado-->
+      <div class="col-md-2">
+            <div role="tablist" id="accordion-1">
+                <div class="card">
+                    <div class="card-header" role="tab">
+                        <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="true" aria-controls="accordion-1 .item-1" href="div#accordion-1 .item-1" >Perfil</a></h5>
+                    </div>
+                    <div class="collapse show item-1" [routerLink]="['/cuenta']" role="tabpanel" data-parent="#accordion-1">
+                          <div class="card-body">
+                            <a href="javascript:void(0);"><p class="card-text">Mi perfil</p></a>
+                          </div>
+                    </div>
+                    <div class="collapse show item-1" [routerLink]="['/modificarperfil']" role="tabpanel" data-parent="#accordion-1">
+                        <div class="card-body">
+                           <a href="javascript:void(0);"><p class="card-text">Modificar perfil</p></a> 
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" role="tab">
+                        <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-2" href="div#accordion-1 .item-2">Tierras</a></h5>
+                    </div>
+                    <div class="collapse item-2" [routerLink]="['/agregartierra']" role="tabpanel" data-parent="#accordion-1">
+                        <div class="card-body">
+                          <a href="javascript:void(0);"><p class="card-text">Mis tierras</p></a> 
+                        </div>
+                    </div>
+                    <div class="collapse item-2" role="tabpanel" data-parent="#accordion-1">
+                      <div class="card-body">
+                          <a href="javascript:void(0);"><p class="card-text">Tierras rentadas</p></a> 
+                      </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" role="tab">
+                        <h5 class="mb-0"><a data-toggle="collapse" [routerLink]="['/contratos']" aria-expanded="false" aria-controls="accordion-1 .item-3" href="div#accordion-1 .item-3">Contratos</a></h5>
+                    </div>
+                    <!-- <div class="collapse item-3" role="tabpanel" data-parent="#accordion-1">
+                        <div class="card-body">
+                            <p class="card-text">Agregar contratos</p>
+                        </div>
+                    </div>
+                    <div class="collapse item-3" role="tabpanel" data-parent="#accordion-1">
+                      <div class="card-body">
+                          <p class="card-text">Modificar contratos</p>
+                      </div>
+                  </div> -->
+                </div>
+                <div class="card">
+                    <div class="card-header" role="tab">
+                        <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-4" href="div#accordion-1 .item-4">Eventos</a></h5>
+                    </div>
+                    <div class="collapse item-4" [routerLink]="['/addevento']" role="tabpanel" data-parent="#accordion-1">
+                        <div class="card-body">
+                              <a href="javascript:void(0);"><p class="card-text">Nuevo evento</p></a> 
+                        </div>
+                    </div>
+                    <!-- <div class="collapse item-4" role="tabpanel" data-parent="#accordion-1">
+                      <div class="card-body">
+                          <p class="card-text">Modificar evento</p>
+                      </div>
+                    </div> -->
+                    <div class="collapse item-4" [routerLink]="['/adminevento']" role="tabpanel" data-parent="#accordion-1">
+                      <div class="card-body">
+                              <a href="javascript:void(0);"><p class="card-text">Administrar evento</p></a> 
+                      </div>
+                    </div>
+      
+                </div>
+                
+                <div class="card">
+                    <div class="card-header" role="tab">
+                        <h5 class="mb-0"><a data-toggle="collapse" [routerLink]="['/administrarrecursos']" aria-expanded="false" aria-controls="accordion-1 .item-5" href="div#accordion-1 .item-5">Recursos</a></h5>
+                    </div>
+                </div>
+      
+                <div class="card">
+                      <div class="card-header" role="tab">
+                          <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-6" href="div#accordion-1 .item-6">Solicitudes</a></h5>
+                      </div>
+                      <div class="collapse item-6" [routerLink]="['/misolicitudes']" role="tabpanel" data-parent="#accordion-1">
+                          <div class="card-body">
+                                  <a href="javascript:void(0);"><p class="card-text">Mis solicitudes</p></a> 
+                          </div>
+                      </div>
+                      <div class="collapse item-6" [routerLink]="['/solicitudes']" role="tabpanel" data-parent="#accordion-1">
+                        <div class="card-body">
+                              <a href="javascript:void(0);"><p class="card-text">Solicitudes</p></a>
+                        </div>
+                      </div>  
+                  </div>
+            </div>
+        </div>
+    <div class="col-md-10">
+        <div class="row">
+            <div class="col-md-5">
+                <h4>Agregar insumo</h4>
+                <br>
+                <form #addInsumoForm="ngForm" (ngSubmit)="addInsumoForm.valid && onSubmit(addInsumoForm)">
+                    
+                    <div class="row">
+                        <div class="col-md-7">
+                                <a><img style="width:120px;" class="rounded" src="{{url+'getFotoTierra/'+tierraEvento.imagen}}" alt=""></a>
+                                <h5 style="margin-top:5px;">{{evento2.titulo}}</h5>
+                        </div>
+                        <!-- <div class="col-md-7" style="margin-top:40px; margin-left: 10px;"><h4>{{evento2.titulo}}</h4></div> -->
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Recurso</h5>
+                            <!-- <select class="form-control" (click)="setRecurso(content)" style="width: 150px" name="resource" #resource="ngModel" [(ngModel)]="detalleEvento.recurso" required  [ngClass]="{'invalid-textbox':addInsumoForm.submitted && !resource.valid}">
+                                <option [value]=""></option>
+                            </select > -->
+                            <div class="input-group">
+                                <input class="form-control formcontrol-sm width100" style="overflow: hidden;"  type="text" name="resource" #resource="ngModel" [(ngModel)]="detalleEvento.recurso"
+                                required [ngClass]="{'invalid-textbox' :addInsumoForm.submitted && !resource.valid}" disabled>
+                                <span class="input-group-btn">
+                                    <button  class="btn btn-info" style="float: right;" type="button" (click)="setRecurso(content);"><i class="fa fa-th-list"></i></button>
+                                </span>
+                            </div>
+
+                            
+                            <div *ngIf="addInsumoForm.submitted && !detalleEvento.recurso">
+                                <label class="validation-message">Campo recurso requerido.</label>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <h5>Cantidad</h5>
+                            <input  class="form-control formcontrol-sm" style="width:170px" type="number" name="cantidad" #cantidad="ngModel" [(ngModel)]="detalleEvento.cantidad" min="1"
+                            required [ngClass]="{'invalid-textbox' :addInsumoForm.submitted && !cantidad.valid }">
+                            <div *ngIf="addInsumoForm.submitted && !cantidad.valid">
+                                <label class="validation-message">Campo cantidad requerido.</label>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="success" *ngIf="showSucessMessage">
+                            Se ha registrado correctamente
+                    </div>
+                              
+                              <!-- Error message -->
+                    <div class="alert" *ngIf="serverErrorMessages">
+                        {{serverErrorMessages}}
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <button class="btn btn-primary" type="submit" value="registrar">Aceptar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-7" style="margin-top: 55px">
+                <div class="table-responsive">   
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                            <th scope="col">Recurso</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Precio Unitario</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Fecha de registro</th>
+                            </tr>
+                        </thead>
+                        <tbody > <!-- condición si no hay recursos-->
+                            <tr *ngFor="let detalleEvent of detallesEvento"> <!--Ciclo para recursos ngfor-->
+                            <th scope="row">{{detalleEvent.recurso}}</th>
+                            <td>{{detalleEvent.cantidad}}</td>
+                            <td>{{detalleEvent.preciounit}}</td>
+                            <td>{{detalleEvent.total}}</td>
+                            <td>{{detalleEvent.fecha}}</td>
+                            </tr>            
+                        </tbody>
+                    </table>                    
+                </div>
+            </div> 
+        </div>
+    </div>
+    </div>
+  </body>
+
+
+<ng-template #content let-modal data-backdrop="static" data-keyboard="false">
+        <div class="modal-header">
+            <h4 class="modal-title">Mis recursos</h4>         
+        </div>
+        <div class="modal-body">
+            <div class="table-responsive">   
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                        <th scope="col">Recurso</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Seleccionar</th>
+                        </tr>
+                        </thead>
+                        <tbody > <!-- condición si no hay recursos-->
+                            <tr *ngFor="let recurs of recursos"> <!--Ciclo para recursos ngfor-->
+                            <th scope="row">{{recurs.recurso}}</th>
+                            <td>{{recurs.costo}}</td>
+                            <td><button  class="btn btn-primary" (click)="setSelectedRecurso(recurs); modal.close('Close click');"><i class="fa fa-check-square"></i></button></td>
+                            </tr>            
+                        </tbody>
+                </table>                    
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" (click)="modal.close('Close click');" class="btn btn-info">Cerrar</button>
+        </div>
+</ng-template>
+
+<ng-template #uso let-modal data-backdrop="static" data-keyboard="false">
+        <div class="modal-header">
+            <h4 class="modal-title">Agregar insumo</h4>
+            
+        </div>
+        <div class="modal-body">
+            <p>¿Seguro que desea agregar el insumo?</p>
+            <p>El insumo será registrado en el evento.</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" (click)="modal.close('Close click'); agregarI(uso);" class="btn btn-primary">Aceptar</button>
+            <button type="button" (click)="modal.close('Close click');" class="btn btn-danger">Cancelar</button>
+            
+        </div>
+    </ng-template>

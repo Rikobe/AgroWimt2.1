@@ -1,12 +1,12 @@
 <head>
 </head>
-<body style="padding-right: 0px; padding-left: 0px;">
+<body style="padding-right: 0px; padding-left: 0px;" (window:scroll)="Scroll($event)">
   <h2 style="margin-left:30px;">Promociones</h2>
   <div style="margin-top:20px;" class="row">
     <div id = "arriba" class = "col col-sm-3 col-md-3 col-lg-3">
       <h4 style="margin-left:30px;">Filtros</h4>
       <div style="padding-left: 30px; padding-right: 30px;">
-        <div style="border-style: solid; border-width: 3px; border-color: black;">
+        <div class="border-right">
           <div class="form-group" style="padding:20px">
             <h4>Ubicación</h4>
             <div class="form-check">
@@ -18,7 +18,7 @@
                 <br>
               </div>
             </div>
-            <hr>
+            <!-- <hr>
             <h4>Cultivo</h4>
             <div class="form-check">
               <div *ngFor="let cultivo of cultivos">
@@ -28,7 +28,7 @@
                 </label>
                 <br>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -73,11 +73,12 @@
         <h4>No se encuentran tierras del filtro establecido</h4>
       </div>
       <div style="padding-left: 30px; padding-right: 30px; margin-top:10px;" *ngIf="tierras!=null">
-        <div style="border-style: solid; border-width: 3px; border-color: black; padding: 30px">
+        <div class="card">
           <!--AQUI INICIAN LOS ELEMENTOS DE BÚSQUEDA-->
           <div *ngFor="let tierra of tierras">
+              <div hidden>{{tierra._id}}</div>
               <div class="row" style="padding: 30px">
-                  <img class="col col-sm-12 col-md-4 col-lg-4" src="{{url+'getFotoTierra/'+tierra.imagen}}" width="200px" height="200px">
+                  <img class="col col-sm-12 col-md-4 col-lg-4 rounded" (click)="gototierra(tierra._id)" src="{{url+'getFotoTierra/'+tierra.imagen}}" width="200px" height="200px">
                   <div class="col col-sm-12 col-md-3 col-lg-3">
                     <h4>{{tierra.titulo}}</h4>
                     <h4>{{tierra.area}}m2</h4>
@@ -91,7 +92,7 @@
                     <p align="justify">{{tierra.descripcion}}</p>
                   </div>
                   <div class="col-2">
-                    <a href=""><h4 style="margin-top: 55px;">Más ></h4></a>
+                    <a href="javascript:void(0);" (click)="gototierra(tierra._id)"><h4 style="margin-top: 55px;">Mostrar ></h4></a>
                   </div>
                 </div>
                 <hr>

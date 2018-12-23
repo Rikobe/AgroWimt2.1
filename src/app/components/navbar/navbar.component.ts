@@ -36,6 +36,8 @@ export class NavbarComponent implements OnInit {
   // } 
   logout(){
     this._userService.deleteToken();
+    localStorage.removeItem('idus');
+    localStorage.removeItem('user');
     window.location.href = '/';
   }
 

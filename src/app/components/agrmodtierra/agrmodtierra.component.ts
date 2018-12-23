@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { MatDialogModule, MatDialog, MatDialogConfig } from '@angular/material'
 import { TierrasService } from '../../services/tierras/tierras.service';
 import { DataTransferService } from '../../services/data-transfer.service';
 import { Tierra } from '../../models/tierras.model';
@@ -7,7 +8,10 @@ import { Global } from '../../services/global';
 import { Router } from "@angular/router";
 import { UserService } from '../../shared/user.service';
 import { UploadimagenService } from '../../services/uploadimagen.service';
+import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+
 import { GoogleMap } from '@agm/core/services/google-maps-types';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-agrmodtierra',
@@ -17,14 +21,20 @@ import { GoogleMap } from '@agm/core/services/google-maps-types';
 export class AgrmodtierraComponent implements OnInit {
   lat: number = 51.678418;
   lng: number = 7.809007;
+  user: User = new User();
+  contTierra: number;
   tierra: Tierra = new Tierra();
+  delTierra: Tierra = new Tierra();
   miTierra: Tierra[] = [];
+  idTierraDel: String;
   showSucessMessage: boolean;
   serverErrorMessages: string;
   perfilTierra: any;
   url: String;
   modificado: Boolean = false;
   fileName: String;
+  usoTitle: String;
+  usoDesc: String;
   estados: any = [
     { Lugar: 'Aguascalientes' },
     { Lugar: 'Baja California' },
@@ -76,7 +86,10 @@ export class AgrmodtierraComponent implements OnInit {
     private _tierrasService: TierrasService,
     private userService: UserService,
     private router : Router,
-    private _uploadimagen: UploadimagenService
+    private _uploadimagen: UploadimagenService,
+    private modalService: NgbModal,
+    // private ngbModalOptions: NgbModalOptions
+    // private dialog: MatDialog
   ) { 
     this.url = Global.url;
   }
@@ -99,12 +112,12 @@ export class AgrmodtierraComponent implements OnInit {
       this.tierra.statusrenta = "S";
       this._tierrasService.postTierra(this.tierra).subscribe(
         res => {
-          console.log(res);
+          //console.log(res);
           //Subir imagen
-          console.log(res.tierra._id);
+          //console.log(res.tierra._id);
           this._uploadimagen.makeFileRequest(this.url+"updatefotoTierra/"+res.tierra._id,[],this.perfilTierra,'imagen')
           .then((result:any) => {
-            console.log(result);
+            this.updateContTierra("suma");
             this.showSucessMessage = true;
             setTimeout(() => this.showSucessMessage = false, 4000);
           });
@@ -140,10 +153,6 @@ export class AgrmodtierraComponent implements OnInit {
     this.modificado = false;
   }
 
-  getlatlng(e){
-    console.log(e);
-  }
-
   setTipoCultivo(e){
     this.tierra.tipocultivo = e.target.text;
   }
@@ -156,22 +165,25 @@ export class AgrmodtierraComponent implements OnInit {
   fileChangeEvent(file){
 
     this.perfilTierra = <Array<File>>file.target.files;
-    console.log(this.perfilTierra);
+    //console.log(this.perfilTierra);
     this.fileName = file.target.files[0].name;
   }
 
   getMisTierras(){
     this._tierrasService.getTierrasOwner(localStorage.getItem('idus')).subscribe(
       response => {
-        if (response.resultado)
+        if (response.resultado){
           this.miTierra = response.resultado;
+          //console.log(this.miTierra);
+        }
+
         else
           this.miTierra = null;
         
-        console.log(this.miTierra);
+        //console.log(this.miTierra);
       },
       error => {
-        console.log(error);
+        //console.log(error);
       }
     );
   }
@@ -179,9 +191,63 @@ export class AgrmodtierraComponent implements OnInit {
   editarT(tierra: Tierra){
     this.modificado = true;
     this.tierra = tierra;
-    console.log(tierra);
+    //console.log(tierra);
   }
-  initMap(){
-    
+
+  eliminarT(uso){
+    this._tierrasService.getInfotierra(this.idTierraDel).subscribe(
+      response => {
+        this.delTierra = response.resultado;
+        console.log(this.delTierra);
+        if (this.delTierra.statusrenta == "S" || this.delTierra.status == "Renta" || this.delTierra.status == "Evento"){
+          this.usoTitle = "Tierra en uso";
+          this.usoDesc = "La tierra que desea eliminar no puede ser borrada porque está siendo usada.";
+          this.modalService.open(uso);
+        }
+        else {
+          this._tierrasService.deleteTierra(this.idTierraDel).subscribe(
+            response => {
+              this.updateContTierra("resta");
+              this.usoTitle = "Tierra eliminada";
+              this.usoDesc = "La tierra ha sido eliminada de sus tierras.";
+              this.modalService.open(uso);
+              this.getMisTierras();
+            },
+            error => {
+              console.log(error);
+            }
+          );
+        }
+
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  openCancelModal(content, tierra:Tierra){
+    this.idTierraDel = tierra._id;
+    this.modalService.open(content);
+  }
+
+  updateContTierra(opc){
+    this.userService.getInfoUser(localStorage.getItem('idus')).subscribe(
+        response => {
+          this.user = response.resultado;
+          if (opc === "suma")
+            this.user.tierras++;
+          else if (opc === "resta")
+            this.user.tierras--;
+          this.userService.updateUser(this.user).subscribe(
+            response => {
+
+            },
+            error => {
+              console.log(error);
+            }
+          );
+        }      
+    );
   }
 }

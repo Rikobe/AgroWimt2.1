@@ -1,0 +1,23 @@
+label.validation-message{
+    color:#ed5558;
+  }
+
+agm-map {
+    width: 400px;
+    height: 200px;
+}
+
+
+.alert {
+    padding: 20px;
+    background-color: #f44336; /* Red */
+    color: white;
+    margin-bottom: 15px;
+  }
+  
+  .success{
+    padding: 20px;
+    background-color:#249424; /* Green */
+    color: white;
+    margin-bottom: 15px;
+  }

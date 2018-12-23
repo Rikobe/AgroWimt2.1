@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 import { Global } from '../services/global';
 import { User } from '../models/user.model';
@@ -13,6 +14,7 @@ export class UserService {
     nombre: '',
     apellido: '',
     visibilidad: '',
+    balance: 0,
     email: '',
     password: '',
     fecharegistro: '',
@@ -40,7 +42,7 @@ export class UserService {
 
   postUser(user: User){
     user.fecharegistro = new Date().toLocaleString();
-    console.log(user);
+    //console.log(user);
     return this.http.post(this.url+'registrarse',user,this.noAuthHeader);
   }
 
@@ -50,6 +52,16 @@ export class UserService {
 
   getUserProfile() {
     return this.http.get(this.url + 'perfil');
+  }
+
+  getInfoUser(id: String): Observable<any> {
+    return this.http.get(this.url + 'getInfoUser/' + id);
+  } 
+
+  updateUser(user): Observable<any> {
+    let params = JSON.stringify(user);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.put(this.url+ 'updateUser/'+localStorage.getItem('idus'), params, {headers:headers});
   }
 
 

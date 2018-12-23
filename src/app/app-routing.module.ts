@@ -13,12 +13,19 @@ import { AdministrarTierraComponent } from './components/administrar-tierra/admi
 import { AgrmodrecursosComponent } from './components/agrmodrecursos/agrmodrecursos.component';
 import { ContratosComponent } from './components/contratos/contratos.component';
 import { PerfiltierraComponent } from './components/perfiltierra/perfiltierra.component';
+import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
+import { MissolicitudesComponent } from './components/missolicitudes/missolicitudes.component';
+import { ModificarperilComponent } from './components/modificarperil/modificarperil.component';
+import { AdmineventosComponent } from './components/admineventos/admineventos.component';
+import { PanelComponent } from './components/user/panel/panel.component';
+import { PagotierraComponent } from './components/pagotierra/pagotierra.component';
 
 import { AuthguardService } from './services/authguard.service';
 import { SignInComponent } from './components/user/sign-in/sign-in.component';
 import { SignUpComponent } from './components/user/sign-up/sign-up.component';
 import { UserComponent } from './components/user/user.component';
 import { AuthGuard } from './auth/auth.guard';
+import { AddeventosComponent } from './components/addeventos/addeventos.component';
 
 
 const routes: Routes = [
@@ -27,14 +34,21 @@ const routes: Routes = [
   { path: 'callback', component: CallbackComponent},
   { path: 'search', component: BusquedaComponent},
   { path: 'promociones', component: PromocionesComponent},
-  { path: 'masvendido', component: MasvendidoComponent},
+  { path: 'masrentado', component: MasvendidoComponent},
   { path: 'agregartierra', component: AgrmodtierraComponent},
-  { path: 'administrartierra', component: AdministrarTierraComponent},
+  { path: 'addevento', component: AdministrarTierraComponent},
   { path: 'administrarrecursos', component: AgrmodrecursosComponent},
   { path: 'contratos', component: ContratosComponent},
+  { path: 'addeventos', component: AddeventosComponent},
   { path: 'perfiltierra', component: PerfiltierraComponent},
+  { path: 'solicitudes', component: SolicitudesComponent},
+  { path: 'misolicitudes', component: MissolicitudesComponent},
+  { path: 'modificarperfil' , component: ModificarperilComponent},
+  { path: 'adminevento', component: AdmineventosComponent},
   { path: 'registrarse', component: UserComponent, children: [{ path: '', component: SignUpComponent }]},
   { path: 'login', component: UserComponent, children: [{ path: '', component: SignInComponent }]},
+  { path: 'panel', component:PanelComponent},
+  { path: 'pagotierra', component:PagotierraComponent},
 
   { path: '**', component: HomeComponent },
 

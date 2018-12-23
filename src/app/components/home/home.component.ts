@@ -4,6 +4,7 @@ import { DataTransferService } from '../../services/data-transfer.service';
 import { Tierra } from '../../models/tierras.model';
 import { Global } from '../../services/global';
 import { AuthService} from '../../services/auth.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,7 @@ export class HomeComponent implements OnInit {
   loggeado : boolean = false;
   cardLimit: Number;
   constructor(private _tierraService: TierrasService, private _dataTransfer: DataTransferService, 
-    private _authService:AuthService){
+    private _authService:AuthService, private router: Router){
       _authService.handleAuthentication();
       this.loggeado = this._authService.isAuthenticated();
       if (this.loggeado)
@@ -84,8 +85,8 @@ export class HomeComponent implements OnInit {
   }
 
   gototierra(_id: any){
-    console.log(_id);
     this._dataTransfer.someDataChanges(_id);
+    this.router.navigateByUrl('/perfiltierra');
   }
 
 }

@@ -4,6 +4,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { AgmCoreModule } from '@agm/core';
+import { } from '@angular/material'; 
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -26,10 +27,19 @@ import { SignInComponent } from './components/user/sign-in/sign-in.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { SignUpComponent } from './components/user/sign-up/sign-up.component';
 import { UserComponent } from './components/user/user.component';
-
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { UserService } from './shared/user.service';
+import { SolicitudesComponent } from './components/solicitudes/solicitudes.component';
+import { MissolicitudesComponent } from './components/missolicitudes/missolicitudes.component';
+import { ModificarperilComponent } from './components/modificarperil/modificarperil.component';
+import { AdmineventosComponent } from './components/admineventos/admineventos.component';
+import { ModalcancelComponent } from './components/modalcancel/modalcancel.component';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { AddeventosComponent } from './components/addeventos/addeventos.component';
+import { PanelComponent } from './components/user/panel/panel.component';
+import { PagotierraComponent } from './components/pagotierra/pagotierra.component';
+
 
 
 @NgModule({
@@ -51,13 +61,22 @@ import { UserService } from './shared/user.service';
     UserComponent,
     SignUpComponent,
     UserProfileComponent,
-    SignInComponent
+    SignInComponent,
+    SolicitudesComponent,
+    MissolicitudesComponent,
+    ModificarperilComponent,
+    AdmineventosComponent,
+    ModalcancelComponent,
+    AddeventosComponent,
+    PanelComponent,
+    PagotierraComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     HttpModule,
+    NgbModalModule,
     FormsModule,
     AgmCoreModule.forRoot({apiKey: 'AIzaSyBSKNno0k2uTLczSQL08pRkCYN_Q419-hg'})
   ],

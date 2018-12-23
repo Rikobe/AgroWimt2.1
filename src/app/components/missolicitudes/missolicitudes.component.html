@@ -1,0 +1,253 @@
+<head>
+  
+  </head>
+  <body style="padding-right: 0px; padding-right: 15px;">
+    <div class="row" style="background-color:white;">
+        <div class="col-md-2">
+            <div role="tablist" id="accordion-1">
+                <div class="card">
+                    <div class="card-header" role="tab">
+                        <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="true" aria-controls="accordion-1 .item-1" href="div#accordion-1 .item-1" >Perfil</a></h5>
+                    </div>
+                    <div class="collapse show item-1" [routerLink]="['/cuenta']" role="tabpanel" data-parent="#accordion-1">
+                          <div class="card-body">
+                            <a href="javascript:void(0);"><p class="card-text">Mi perfil</p></a>
+                          </div>
+                    </div>
+                    <div class="collapse show item-1" [routerLink]="['/modificarperfil']" role="tabpanel" data-parent="#accordion-1">
+                        <div class="card-body">
+                           <a href="javascript:void(0);"><p class="card-text">Modificar perfil</p></a> 
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" role="tab">
+                        <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-2" href="div#accordion-1 .item-2">Tierras</a></h5>
+                    </div>
+                    <div class="collapse item-2" [routerLink]="['/agregartierra']" role="tabpanel" data-parent="#accordion-1">
+                        <div class="card-body">
+                          <a href="javascript:void(0);"><p class="card-text">Mis tierras</p></a> 
+                        </div>
+                    </div>
+                    <div class="collapse item-2" role="tabpanel" data-parent="#accordion-1">
+                      <div class="card-body">
+                          <a href="javascript:void(0);"><p class="card-text">Tierras rentadas</p></a> 
+                      </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" role="tab">
+                        <h5 class="mb-0"><a data-toggle="collapse" [routerLink]="['/contratos']" aria-expanded="false" aria-controls="accordion-1 .item-3" href="div#accordion-1 .item-3">Contratos</a></h5>
+                    </div>
+                    <!-- <div class="collapse item-3" role="tabpanel" data-parent="#accordion-1">
+                        <div class="card-body">
+                            <p class="card-text">Agregar contratos</p>
+                        </div>
+                    </div>
+                    <div class="collapse item-3" role="tabpanel" data-parent="#accordion-1">
+                      <div class="card-body">
+                          <p class="card-text">Modificar contratos</p>
+                      </div>
+                  </div> -->
+                </div>
+                <div class="card">
+                    <div class="card-header" role="tab">
+                        <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-4" href="div#accordion-1 .item-4">Eventos</a></h5>
+                    </div>
+                    <div class="collapse item-4" [routerLink]="['/addevento']" role="tabpanel" data-parent="#accordion-1">
+                        <div class="card-body">
+                              <a href="javascript:void(0);"><p class="card-text">Nuevo evento</p></a> 
+                        </div>
+                    </div>
+                    <!-- <div class="collapse item-4" role="tabpanel" data-parent="#accordion-1">
+                      <div class="card-body">
+                          <p class="card-text">Modificar evento</p>
+                      </div>
+                    </div> -->
+                    <div class="collapse item-4" [routerLink]="['/adminevento']" role="tabpanel" data-parent="#accordion-1">
+                      <div class="card-body">
+                              <a href="javascript:void(0);"><p class="card-text">Administrar evento</p></a> 
+                      </div>
+                    </div>
+      
+                </div>
+                
+                <div class="card">
+                    <div class="card-header" role="tab">
+                        <h5 class="mb-0"><a data-toggle="collapse" [routerLink]="['/administrarrecursos']" aria-expanded="false" aria-controls="accordion-1 .item-5" href="div#accordion-1 .item-5">Recursos</a></h5>
+                    </div>
+                </div>
+      
+                <div class="card">
+                      <div class="card-header" role="tab">
+                          <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-6" href="div#accordion-1 .item-6">Solicitudes</a></h5>
+                      </div>
+                      <div class="collapse item-6" [routerLink]="['/misolicitudes']" role="tabpanel" data-parent="#accordion-1">
+                          <div class="card-body">
+                                  <a href="javascript:void(0);"><p class="card-text">Mis solicitudes</p></a> 
+                          </div>
+                      </div>
+                      <div class="collapse item-6" [routerLink]="['/solicitudes']" role="tabpanel" data-parent="#accordion-1">
+                        <div class="card-body">
+                              <a href="javascript:void(0);"><p class="card-text">Solicitudes</p></a>
+                        </div>
+                      </div>  
+                  </div>
+            </div>
+        </div>
+          <div class="col-md-8">
+            <div class="row" style="margin-top: 30px; margin-left: 120px;">
+                <h6>Solicitudes Pendientes</h6>
+                <div class="table-responsive">   
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th scope="col">Titulo</th>
+                          <th scope="col">Dueño</th>
+                          <th scope="col">Precio</th>
+                          <th scope="col">Inicio</th>
+                          <th scope="col">Fin</th>
+                          <th scope="col">Cancelar</th>
+                        </tr>
+                      </thead>
+                      <tbody > <!-- condición si no hay recursos-->
+                        <tr *ngFor="let solicitud of (contratacionesP)"> <!--Ciclo para recursos ngfor-->
+                        <th scope="row">{{solicitud.tierra}}</th>
+                          <td>{{solicitud.owner}}</td>
+                          <td>{{solicitud.precio}}</td>
+                          <td>{{solicitud.fechainicio}}</td>
+                          <td>{{solicitud.fechafin}}</td>
+                          <td><button  class="btn btn-danger" (click)="openCancelModal(content,solicitud,'P')"><i class="far fa-window-close"></i></button></td>
+                        </tr>            
+                      </tbody>
+                    </table>  
+                    <div *ngIf = "nosolicitudP" style="color: red">No tienes ninguna solicitud pendiente.</div> 
+                    <hr>                 
+                  </div>
+            </div>
+            <div class="row" style="margin-left: 120px;">
+                <h6>Solicitudes Aceptadas</h6>
+                <div class="table-responsive">   
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th scope="col">Titulo</th>
+                          <th scope="col">Dueño</th>
+                          <th scope="col">Precio</th>
+                          <th scope="col">Inicio</th>
+                          <th scope="col">Fin</th>
+                          <th scope="col">Pagar</th>
+                          <th scope="col">Cancelar</th>
+                        </tr>
+                      </thead>
+                      <tbody > <!-- condición si no hay recursos-->
+                        <tr *ngFor="let solicitud of (contratacionesA)"> <!--Ciclo para recursos ngfor-->
+                        <th scope="row">{{solicitud.tierra}}</th>
+                          <td>{{solicitud.owner}}</td>
+                          <td>{{solicitud.precio}}</td>
+                          <td>{{solicitud.fechainicio}}</td>
+                          <td>{{solicitud.fechafin}}</td>
+                          <td><button  class="btn btn-success" (click)="openPagaModal(pagar,solicitud)"><i class="fa fa-credit-card"></i></button></td>
+                          <td><button  class="btn btn-danger"  (click)="openCancelModal(content,solicitud, 'A')"><i class="far fa-window-close"></i></button></td>
+                        </tr>            
+                      </tbody>
+                    </table>  
+                    <div *ngIf = "nosolicitudA" style="color: red">No tienes ninguna solicitud aceptada.</div> 
+                    <hr>                 
+                  </div>
+            </div>
+            <div class="row" style="margin-left: 120px;">
+                <h6>Solicitudes Rechazadas</h6>
+                <div class="table-responsive">   
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th scope="col">Titulo</th>
+                          <th scope="col">Dueño</th>
+                          <th scope="col">Precio</th>
+                          <th scope="col">Inicio</th>
+                          <th scope="col">Fin</th>
+                          <th scope="col">Solicitar</th>
+                          <th scope="col">Eliminar</th>
+                        </tr>
+                      </thead>
+                      <tbody > <!-- condición si no hay recursos-->
+                        <tr *ngFor="let solicitud of (contratacionesR)"> <!--Ciclo para recursos ngfor-->
+                        <th scope="row">{{solicitud.tierra}}</th>
+                          <td>{{solicitud.owner}}</td>
+                          <td>{{solicitud.precio}}</td>
+                          <td>{{solicitud.fechainicio}}</td>
+                          <td>{{solicitud.fechafin}}</td>
+                          <td><button  class="btn btn-success" (click)="openSolicitarModal(contentS, solicitud)"><i class="fa fa-credit-card"></i></button></td>
+                          <td><button  class="btn btn-danger" (click)="openCancelModal(content,solicitud,'R')"><i class="far fa-window-close"></i></button></td>
+                        </tr>            
+                      </tbody>
+                    </table>  
+                    <div *ngIf = "nosolicitudR" style="color: red">No tienes ninguna solicitud rechazada.</div> 
+                    <hr>                 
+                  </div>
+            </div>
+          </div>
+    </div>
+  </body>
+
+  <ng-template #content let-modal data-backdrop="static" data-keyboard="false">
+      <div class="modal-header">
+          <h4 class="modal-title">Eliminar solicitud</h4>
+          
+      </div>
+      <div class="modal-body">
+          <p>¿Desea eliminar esta solicitud permanentemente?</p>
+          <p>Podrá realizar la solicitud de nuevo desde el perfil de la tierra.</p>
+      </div>
+      <div class="modal-footer">
+          <button type="button" (click)="modal.close('Close click'); eliminarSolicitud(uso);" class="btn btn-primary">Aceptar</button>
+          <button type="button" (click)="modal.close('Close click');" class="btn btn-danger">Cancelar</button>
+          
+      </div>
+  </ng-template>
+  <ng-template #contentS let-modal data-backdrop="static" data-keyboard="false">
+      <div class="modal-header">
+          <h4 class="modal-title">Solicitar tierra</h4>
+          
+      </div>
+      <div class="modal-body">
+          <p>¿Desea volver a solicitar la tierra?</p>
+          <p>La tierra será solicita nuevamente para revisión del dueño.</p>
+      </div>
+      <div class="modal-footer">
+          <button type="button" (click)="modal.close('Close click'); solicitarSolicitud(uso);" class="btn btn-primary">Aceptar</button>
+          <button type="button" (click)="modal.close('Close click');" class="btn btn-danger">Cancelar</button>
+          
+      </div>
+  </ng-template>
+  <ng-template #uso let-modal data-backdrop="static" data-keyboard="false">
+          <div class="modal-header">
+              <h4 class="modal-title">{{usoTitle}}</h4>
+              
+          </div>
+          <div class="modal-body">
+              <p>{{usoDesc}}</p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" (click)="modal.close('Close click');" class="btn btn-info">Aceptar</button>
+          </div>
+  </ng-template>
+
+  <ng-template #pagar let-modal data-backdrop="static" data-keyboard="false">
+        <div class="modal-header">
+            <h4 class="modal-title">Pagar renta</h4>
+            
+        </div>
+        <div class="modal-body">
+            <p>¿Desea pagar esta renta??</p>
+            <p>Pagar la renta de esta tierra le permitirá realizar administración de eventos con estas.</p>
+            <h4>Total a pagar:</h4>
+            <input type="text" [value]="contratacion.pago" disabled>
+        </div>
+        <div class="modal-footer">
+            <button type="button" (click)="modal.close('Close click'); finalizarPago(uso);" class="btn btn-primary">Aceptar</button>
+            <button type="button" (click)="modal.close('Close click');" class="btn btn-danger">Cancelar</button>
+            
+        </div>
+    </ng-template>

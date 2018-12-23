@@ -6,7 +6,7 @@
     <div id = "arriba" class = "col col-sm-3 col-md-3 col-lg-3">
       <h4 style="margin-left:30px;">Filtros</h4>
       <div style="padding-left: 30px; padding-right: 30px;">
-        <div style="border-style: solid; border-width: 3px; border-color: black;">
+        <div class="card">
           <div class="form-group" style="padding:20px">
             <h4>Ubicación</h4>
             <div class="form-check">
@@ -70,9 +70,9 @@
         <br>
         <div style="padding-left: 30px; padding-right: 30px; margin-top:10px;" *ngIf="tierras==null">
           <hr>
-          <h4>No se encuentran tierras del filtro establecido</h4>
+          <h4>No se encuentran tierras de la búsqueda</h4>
         </div>
-        <div style="border-style: solid; border-width: 5px; border-color: black; padding: 30px" *ngIf="tierras!=null">
+        <div class="card" *ngIf="tierras!=null">
           <!--AQUI INICIAN LOS ELEMENTOS DE BÚSQUEDA-->
           <div *ngFor="let tierra of tierras">
             <div class="row" style="padding: 30px">
@@ -87,7 +87,7 @@
                 <p align="justify">{{tierra.descripcion}}</p>
               </div>
               <div class="col-2">
-                <a href=""><h4 style="margin-top: 55px;">Mostrar ></h4></a>
+                <a href="javascript:void(0);" (click)="gototierra(tierra._id)"><h4 style="margin-top: 55px;">Mostrar ></h4></a>
               </div>
             </div>
             <hr>

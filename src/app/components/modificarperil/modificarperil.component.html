@@ -1,0 +1,171 @@
+<head>
+
+</head>
+<body style="padding-right: 0px; padding-right: 15px;">
+  <div class="row" style="background-color:white;">
+        <div class="col-md-2">
+                <div role="tablist" id="accordion-1">
+                    <div class="card">
+                        <div class="card-header" role="tab">
+                            <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="true" aria-controls="accordion-1 .item-1" href="div#accordion-1 .item-1" >Perfil</a></h5>
+                        </div>
+                        <div class="collapse show item-1" [routerLink]="['/cuenta']" role="tabpanel" data-parent="#accordion-1">
+                              <div class="card-body">
+                                <a href="javascript:void(0);"><p class="card-text">Mi perfil</p></a>
+                              </div>
+                        </div>
+                        <div class="collapse show item-1" [routerLink]="['/modificarperfil']" role="tabpanel" data-parent="#accordion-1">
+                            <div class="card-body">
+                               <a href="javascript:void(0);"><p class="card-text">Modificar perfil</p></a> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" role="tab">
+                            <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-2" href="div#accordion-1 .item-2">Tierras</a></h5>
+                        </div>
+                        <div class="collapse item-2" [routerLink]="['/agregartierra']" role="tabpanel" data-parent="#accordion-1">
+                            <div class="card-body">
+                              <a href="javascript:void(0);"><p class="card-text">Mis tierras</p></a> 
+                            </div>
+                        </div>
+                        <div class="collapse item-2" role="tabpanel" data-parent="#accordion-1">
+                          <div class="card-body">
+                              <a href="javascript:void(0);"><p class="card-text">Tierras rentadas</p></a> 
+                          </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" role="tab">
+                            <h5 class="mb-0"><a data-toggle="collapse" [routerLink]="['/contratos']" aria-expanded="false" aria-controls="accordion-1 .item-3" href="div#accordion-1 .item-3">Contratos</a></h5>
+                        </div>
+                        <!-- <div class="collapse item-3" role="tabpanel" data-parent="#accordion-1">
+                            <div class="card-body">
+                                <p class="card-text">Agregar contratos</p>
+                            </div>
+                        </div>
+                        <div class="collapse item-3" role="tabpanel" data-parent="#accordion-1">
+                          <div class="card-body">
+                              <p class="card-text">Modificar contratos</p>
+                          </div>
+                      </div> -->
+                    </div>
+                    <div class="card">
+                        <div class="card-header" role="tab">
+                            <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-4" href="div#accordion-1 .item-4">Eventos</a></h5>
+                        </div>
+                        <div class="collapse item-4" [routerLink]="['/addevento']" role="tabpanel" data-parent="#accordion-1">
+                            <div class="card-body">
+                                  <a href="javascript:void(0);"><p class="card-text">Nuevo evento</p></a> 
+                            </div>
+                        </div>
+                        <!-- <div class="collapse item-4" role="tabpanel" data-parent="#accordion-1">
+                          <div class="card-body">
+                              <p class="card-text">Modificar evento</p>
+                          </div>
+                        </div> -->
+                        <div class="collapse item-4" [routerLink]="['/adminevento']" role="tabpanel" data-parent="#accordion-1">
+                          <div class="card-body">
+                                  <a href="javascript:void(0);"><p class="card-text">Administrar evento</p></a> 
+                          </div>
+                        </div>
+          
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header" role="tab">
+                            <h5 class="mb-0"><a data-toggle="collapse" [routerLink]="['/administrarrecursos']" aria-expanded="false" aria-controls="accordion-1 .item-5" href="div#accordion-1 .item-5">Recursos</a></h5>
+                        </div>
+                    </div>
+          
+                    <div class="card">
+                          <div class="card-header" role="tab">
+                              <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-6" href="div#accordion-1 .item-6">Solicitudes</a></h5>
+                          </div>
+                          <div class="collapse item-6" [routerLink]="['/misolicitudes']" role="tabpanel" data-parent="#accordion-1">
+                              <div class="card-body">
+                                      <a href="javascript:void(0);"><p class="card-text">Mis solicitudes</p></a> 
+                              </div>
+                          </div>
+                          <div class="collapse item-6" [routerLink]="['/solicitudes']" role="tabpanel" data-parent="#accordion-1">
+                            <div class="card-body">
+                                  <a href="javascript:void(0);"><p class="card-text">Solicitudes</p></a>
+                            </div>
+                          </div>  
+                      </div>
+                </div>
+            </div>
+   <!-- Fin menú -->
+
+  <div class="col-md-10">
+    <form #modPerfilForm="ngForm" (ngSubmit)="modPerfilForm.valid && onSubmit(modPerfilForm)">
+        <h2>Modificar perfil</h2>
+
+        <div class="row">
+          <div class="col-md-3">
+            <div><h6 for="">Nombre</h6></div>
+            <input class="form-control form-control-sm" type="text" name="nombre" #nombre="ngModel" [(ngModel)]="user.nombre" 
+            style="width: 200px">
+          </div>
+          <div class="col-md-3">
+            <div><h6 for="">Apellidos</h6></div>
+            <input class="form-control form-control-sm" type="text" name="apellido" #apellido="ngModel" [(ngModel)]="user.apellido" 
+            style="width: 200px">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-3">
+            <div><h6 for="">Teléfono 1</h6></div>
+            <input class="form-control form-control-sm" type="text" name="tel1" #tel1="ngModel" [(ngModel)]="user.tel1" 
+            style="width: 200px">
+          </div>
+          <div class="col-md-3">
+            <div><h6 for="">Teléfono 2</h6></div>
+            <input class="form-control form-control-sm" type="text" name="tel2" #tel2="ngModel" [(ngModel)]="user.tel2" 
+            style="width: 200px">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-3">
+              <div><h6 for="">Colonia</h6></div>
+              <input class="form-control form-control-sm" type="text" name="colonia" #colonia="ngModel" [(ngModel)]="user.colonia" 
+              style="width: 200px">
+            </div>
+            <div class="col-md-3">
+              <div><h6 for="">Calle</h6></div>
+              <input class="form-control form-control-sm" type="text" name="calle" #calle="ngModel" [(ngModel)]="user.calle" 
+              style="width: 200px">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-3">
+              <div><h6 for=""># Casa/Edificio</h6></div>
+              <input class="form-control form-control-sm" type="text" name="num" #num="ngModel" [(ngModel)]="user.num" 
+              style="width: 200px">
+            </div>
+            <div class="col-md-3">
+              <div><h6 for="">RFC</h6></div>
+              <input class="form-control form-control-sm" type="text" name="rfc" #rfc="ngModel" [(ngModel)]="user.rfc" 
+              style="width: 200px">
+            </div>
+        </div>
+        <br>
+        <div class="success" *ngIf="modifiedMessage">
+            {{modifiedMessage}}
+        </div>
+        <div class="alert" *ngIf="errorMessage">
+            {{errorMessage}}
+        </div>
+        <button class="btn btn-primary" type="submit" value="registrar">Aceptar</button>
+
+
+    </form>
+    
+  </div>
+
+  </div>
+  
+</body>

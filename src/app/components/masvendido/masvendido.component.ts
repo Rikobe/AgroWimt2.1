@@ -4,6 +4,7 @@ import { DataTransferService } from '../../services/data-transfer.service';
 import { Tierra } from '../../models/tierras.model';
 import { Global } from '../../services/global';
 import { AuthService} from '../../services/auth.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-masvendido',
@@ -15,6 +16,9 @@ export class MasvendidoComponent implements OnInit {
   sortPrecMaxMin: any;
   sortArMaxMin: any;
   sortArMinMax: any;
+  indice = 5;
+  elemento;
+  ventana;
   tierra: Tierra = new Tierra();
   tierras: Tierra[];
   ubicacion: String[] = [];
@@ -65,39 +69,45 @@ export class MasvendidoComponent implements OnInit {
   constructor(
     private _tierraService: TierrasService, 
     private _dataTransfer: DataTransferService, 
-    private _authService:AuthService
+    private _authService:AuthService,
+    private router: Router
   ) {
     this.sortPrecMinMax = (tierra: Tierra[]) =>
     tierra.sort((tierraA: Tierra, tierraB: Tierra) => {
+      console.log(tierra);
       if (tierraA.precio > tierraB.precio) return 1;
-      if (tierraA.precio < tierraB.precio) return 0;
+      if (tierraA.precio < tierraB.precio) return -1;
+      console.log(tierra);
       return 0;
     }); 
 
     this.sortPrecMaxMin = (tierra: Tierra[]) =>
     tierra.sort((tierraA: Tierra, tierraB: Tierra) => {
       if (tierraA.precio < tierraB.precio) return 1;
-      if (tierraA.precio > tierraB.precio) return 0;
+      if (tierraA.precio > tierraB.precio) return -1;
       return 0;
     }); 
 
     this.sortArMaxMin = (tierra: Tierra[]) =>
     tierra.sort((tierraA: Tierra, tierraB: Tierra) => {
       if (tierraA.precio < tierraB.area) return 1;
-      if (tierraA.precio > tierraB.area) return 0;
+      if (tierraA.precio > tierraB.area) return -1;
       return 0;
     }); 
 
     this.sortArMinMax = (tierra: Tierra[]) =>
     tierra.sort((tierraA: Tierra, tierraB: Tierra) => {
       if (tierraA.area > tierraB.area) return 1;
-      if (tierraA.area < tierraB.area) return 0;
+      if (tierraA.area < tierraB.area) return -1;
       return 0;
     }); 
    }
 
   ngOnInit() {
+    this.elemento = window;
+    this.ventana = document.getElementById('tierrascarga');
     this.getTierraTop();
+    console.log(this.indice);
   }
 
   sortPMinMax(){
@@ -105,6 +115,7 @@ export class MasvendidoComponent implements OnInit {
   }
 
   sortPMaxMin(){
+    
     this.sortPrecMaxMin(this.tierras);
   }
 
@@ -122,11 +133,12 @@ export class MasvendidoComponent implements OnInit {
     //console.log(e);
     
     if (e.target.checked){
+      this.indice = 5;
       this.ubicacion.push(e.target.id);
 
       ubicaciones = this.ubicacion.toString();
 
-      this._tierraService.getFiltroUbicacionT(ubicaciones).subscribe(
+      this._tierraService.getFiltroUbicacionT(ubicaciones,this.indice).subscribe(
         response => {
           if (response.resultado)
             this.tierras = response.resultado;
@@ -149,7 +161,7 @@ export class MasvendidoComponent implements OnInit {
       if (ubicaciones == "")
         this.getTierraTop();
       else{
-        this._tierraService.getFiltroUbicacionT(ubicaciones).subscribe(
+        this._tierraService.getFiltroUbicacionT(ubicaciones,this.indice).subscribe(
           response => {
             if (response.resultado)
               this.tierras = response.resultado;
@@ -164,9 +176,23 @@ export class MasvendidoComponent implements OnInit {
 
   }
 
-
+  Scroll(event){
+    const top = this.elemento.pageYOffset;
+    const height =  this.ventana.offsetHeight-103;
+    if (top > height - 30) {
+      
+      this.indice = this.indice + 5;
+      this.getTierraTop();
+      // if (this.ubicacion.length == 0){
+      //   this.getTierraTop();
+      // }
+      // else {
+      //   this.setUbicaciones(event);
+      // }
+    }
+  }
   getTierraTop() {
-    this._tierraService.getTierraTop().subscribe(
+    this._tierraService.getTierraTop(this.indice).subscribe(
       response => {
         if (response.resultado)
           this.tierras = response.resultado;
@@ -176,5 +202,11 @@ export class MasvendidoComponent implements OnInit {
       }
     );
   }
+
+  gototierra(_id:any){
+    this._dataTransfer.someDataChanges(_id);
+    this.router.navigateByUrl('/perfiltierra');
+  }
+
 
 }

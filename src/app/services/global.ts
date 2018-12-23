@@ -1,3 +1,4 @@
 export var Global = {
-    url: 'http://localhost:3000/api/'
+   url: 'https://agro-preserver.herokuapp.com/api/'
+   //url: 'http://localhost:3000/api/'
 }

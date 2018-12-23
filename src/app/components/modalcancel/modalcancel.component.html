@@ -1,0 +1,16 @@
+<ng-template #content let-modal data-backdrop="static" data-keyboard="false">
+    <div class="modal-header">
+      <h4 class="modal-title">Resultados del proceso de envío</h4>
+      
+    </div>
+    <div class="modal-body">
+      <p>{{mensaje}}</p>
+      <p>{{mensaje6}}</p>
+      <p >{{mensaje3}}</p>
+      <p class="invalido">{{mensaje2}}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-info" (click)="modal.close('Close click'); irAinicio();">Aceptar</button>
+      
+    </div>
+  </ng-template>

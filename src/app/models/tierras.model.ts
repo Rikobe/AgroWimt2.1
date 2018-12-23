@@ -5,10 +5,10 @@ export class Tierra{
      public idowner: String;
         public titulo: String;
         public imagen: String;
-        public precio: Number;
-        public preciodesc: Number;
-        public promocion: Number;
-        public area: Number;
+        public precio: number;
+        public preciodesc: number;
+        public promocion: number;
+        public area: number;
         public calidadtierra: String;
         public tipocultivo: String;
         public visibilidad: String;
@@ -18,6 +18,6 @@ export class Tierra{
         public ciudad: String;
         public fecharegistro: String;
         public status: String;
-        public rentas: Number;
+        public rentas: number;
         public statusrenta: String;
 }

@@ -4,6 +4,7 @@ import { DataTransferService } from '../../services/data-transfer.service';
 import { Tierra } from '../../models/tierras.model';
 import { Global } from '../../services/global';
 import { AuthService} from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-busqueda',
@@ -11,15 +12,16 @@ import { AuthService} from '../../services/auth.service';
   styleUrls: ['./busqueda.component.css']
 })
 export class BusquedaComponent implements OnInit {
+  indice;
   public tierra : Tierra = new Tierra();
   public tierras : Tierra[];
   public url : String = Global.url;
-  busqueda: String;
-  sortPrecMinMax: any; 
-  sortPrecMaxMin: any;
-  sortArMaxMin: any;
-  sortArMinMax: any;
-  ubicaciones: any = [
+  public busqueda: String;
+  public sortPrecMinMax: any; 
+  public sortPrecMaxMin: any;
+  public sortArMaxMin: any;
+  public sortArMinMax: any;
+  public ubicaciones: any = [
     { Lugar: 'Aguascalientes' },
     { Lugar: 'Baja California' },
     { Lugar: 'Baja California Sur' },
@@ -103,7 +105,8 @@ export class BusquedaComponent implements OnInit {
   constructor(
     private _tierraService: TierrasService, 
     private _dataTransfer: DataTransferService, 
-    private _authService:AuthService
+    private _authService: AuthService,
+    private router: Router
   ) {
     this.sortPrecMinMax = (tierra: Tierra[]) =>
     tierra.sort((tierraA: Tierra, tierraB: Tierra) => {
@@ -153,7 +156,7 @@ export class BusquedaComponent implements OnInit {
       }
     );
 
-    this._tierraService.getBusqueda(this.busqueda).subscribe(
+    this._tierraService.getBusqueda(this.busqueda,this.indice).subscribe(
       response => {
         if (response.resultado)
           this.tierras = response.resultado;
@@ -164,6 +167,11 @@ export class BusquedaComponent implements OnInit {
       error => {
         console.log(<any>error);
       }
-    );
+    );  
+  }
+
+  gototierra(_id:any){
+    this._dataTransfer.someDataChanges(_id);
+    this.router.navigateByUrl('/perfiltierra');
   }
 }

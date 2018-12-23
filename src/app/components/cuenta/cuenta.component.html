@@ -10,26 +10,31 @@
               <div class="card-header" role="tab">
                   <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="true" aria-controls="accordion-1 .item-1" href="div#accordion-1 .item-1" >Perfil</a></h5>
               </div>
-              <div class="collapse show item-1" role="tabpanel" data-parent="#accordion-1">
+              <div class="collapse show item-1" [routerLink]="['/cuenta']" role="tabpanel" data-parent="#accordion-1">
+                    <div class="card-body">
+                      <a href="javascript:void(0);"><p class="card-text">Mi perfil</p></a>
+                    </div>
+              </div>
+              <div class="collapse show item-1" [routerLink]="['/modificarperfil']" role="tabpanel" data-parent="#accordion-1">
                   <div class="card-body">
-                      <p class="card-text">Modificar perfil</p>
+                     <a href="javascript:void(0);"><p class="card-text">Modificar perfil</p></a> 
                   </div>
               </div>
           </div>
           <div class="card">
               <div class="card-header" role="tab">
-                  <h5 class="mb-0"><a data-toggle="collapse" [routerLink]="['/agregartierra']" aria-expanded="false" aria-controls="accordion-1 .item-2" href="div#accordion-1 .item-2">Tierras</a></h5>
+                  <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-2" href="div#accordion-1 .item-2">Tierras</a></h5>
               </div>
-              <!-- <div class="collapse item-2" role="tabpanel" data-parent="#accordion-1">
+              <div class="collapse item-2" [routerLink]="['/agregartierra']" role="tabpanel" data-parent="#accordion-1">
                   <div class="card-body">
-                      <p class="card-text" [routerLink]="['/agregartierra']">Agregar tierra</p>
+                    <a href="javascript:void(0);"><p class="card-text">Mis tierras</p></a> 
                   </div>
               </div>
               <div class="collapse item-2" role="tabpanel" data-parent="#accordion-1">
                 <div class="card-body">
-                    <p class="card-text">Modificar tierra</p>
+                    <a href="javascript:void(0);"><p class="card-text">Tierras rentadas</p></a> 
                 </div>
-              </div> -->
+              </div>
           </div>
           <div class="card">
               <div class="card-header" role="tab">
@@ -50,19 +55,19 @@
               <div class="card-header" role="tab">
                   <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-4" href="div#accordion-1 .item-4">Eventos</a></h5>
               </div>
-              <div class="collapse item-4" role="tabpanel" data-parent="#accordion-1">
+              <div class="collapse item-4" [routerLink]="['/addevento']" role="tabpanel" data-parent="#accordion-1">
                   <div class="card-body">
-                      <p class="card-text">Agregar evento</p>
+                        <a href="javascript:void(0);"><p class="card-text">Nuevo evento</p></a> 
                   </div>
               </div>
-              <div class="collapse item-4" role="tabpanel" data-parent="#accordion-1">
+              <!-- <div class="collapse item-4" role="tabpanel" data-parent="#accordion-1">
                 <div class="card-body">
                     <p class="card-text">Modificar evento</p>
                 </div>
-              </div>
-              <div class="collapse item-4" role="tabpanel" data-parent="#accordion-1">
+              </div> -->
+              <div class="collapse item-4" [routerLink]="['/adminevento']" role="tabpanel" data-parent="#accordion-1">
                 <div class="card-body">
-                    <p class="card-text">Actualizar evento</p>
+                        <a href="javascript:void(0);"><p class="card-text">Administrar evento</p></a> 
                 </div>
               </div>
 
@@ -70,52 +75,86 @@
           
           <div class="card">
               <div class="card-header" role="tab">
-                  <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-5" href="div#accordion-1 .item-5">Recursos</a></h5>
+                  <h5 class="mb-0"><a data-toggle="collapse" [routerLink]="['/administrarrecursos']" aria-expanded="false" aria-controls="accordion-1 .item-5" href="div#accordion-1 .item-5">Recursos</a></h5>
               </div>
           </div>
+
+          <div class="card">
+                <div class="card-header" role="tab">
+                    <h5 class="mb-0"><a data-toggle="collapse" aria-expanded="false" aria-controls="accordion-1 .item-6" href="div#accordion-1 .item-6">Solicitudes</a></h5>
+                </div>
+                <div class="collapse item-6" [routerLink]="['/misolicitudes']" role="tabpanel" data-parent="#accordion-1">
+                    <div class="card-body">
+                            <a href="javascript:void(0);"><p class="card-text">Mis solicitudes</p></a> 
+                    </div>
+                </div>
+                <div class="collapse item-6" [routerLink]="['/solicitudes']" role="tabpanel" data-parent="#accordion-1">
+                  <div class="card-body">
+                        <a href="javascript:void(0);"><p class="card-text">Solicitudes</p></a>
+                  </div>
+                </div>  
+            </div>
       </div>
   </div>
-    <div class="col-10">
+    <div class="col-md-10">
       <!--Contenido del perfil-->
       <div class="row">
-        <div class="col-2" style="padding: 15px;">
-          <img src="../../../assets/img/{{user.fotoperfil}}" height="180px" width="180px">
+        <div class="col-md-2" style="padding: 15px;">
+            <img src="../../../assets/img/{{user.fotoperfil}}" height="180px" width="180px">
         </div>
-        <div class="col-5">
-          <h1>{{user.nombre}} {{user.apellido}}</h1>
-          <h4>Perfil ({{user.visibilidad}})  <img style="border-radius: 5px; border-style: solid; border-width: 2px; border-color: black;" height="23px" width="23px" src="https://icon-icons.com/icons2/906/PNG/32/pencil_icon-icons.com_69999.png"></h4>
+        <div class="col-md-4">
+            <h1>{{user.nombre}} {{user.apellido}}</h1>
+            <h4>Perfil ({{user.visibilidad}})</h4>
         </div>
-        <div class="col-4"></div>
-        <div class="col-6">
-          <h3>Información del usuario</h3>
-          <div class="row" style="border-style: solid; border-width: 3px; border-color: black; background-color: white;">
-            <div class="col-6">
-              <h6>Nombre:</h6>
-              <h6>{{user.nombre}} {{user.apellido}}</h6>
-              <br>
-              <h6>RFC:</h6>
-              <h6>{{user.rfc}}</h6>
-              <br>
-              <h6>Calle:</h6>
-              <h6>{{user.calle}}</h6>
-              <br>
-              <h6>Colonia:</h6>
-              <h6>{{user.colonia}}</h6>
-              <br>
-              <h6>Número:</h6>
-              <h6>{{user.num}}</h6>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+            <h3>Información del usuario</h3>
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6><strong>Nombre:</strong></h6>
+                        <h6>{{user.nombre}} {{user.apellido}}</h6>
+                    </div>  
+                    <div class="col-md-6">
+                        <h6><strong>RFC:</strong></h6>
+                        <h6>{{user.rfc}}</h6>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6><strong>Email:</strong></h6>
+                        <h6>{{user.email}}</h6>
+                    </div>
+                    <div class="col-md-6">
+                        <h6><strong>Teléfonos:</strong></h6>
+                        <h6>{{user.tel1}}</h6>
+                        <h6>{{user.tel2}}</h6>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6><strong>Colonia:</strong></h6>
+                        <h6>{{user.colonia}}</h6>
+                    </div>
+                    <div class="col-md-6">
+                        <h6><strong>Calle:</strong></h6>
+                        <h6>{{user.calle}}</h6>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6><strong># Casa/Edificio:</strong></h6>
+                        <h6>{{user.num}}</h6>
+                    </div>
+                </div>
+                
             </div>
-            <div class="col-6">
-              <h6>Teléfonos:</h6>
-              <h6>{{user.tel1}}</h6>
-              <h6>{{user.tel2}}</h6>
-              <br>
-              <h6>Correo:</h6>
-              <h6>{{user.email}}</h6>
-            </div>
-          </div>
         </div>
-        <div class="col-5">
+        <div class="col-md-6">
           <div>
             <h3>Información de la cuenta</h3>
             <div style="background-color: white; ">
@@ -123,7 +162,7 @@
                     <thead>
                       <tr>
                         <th scope="col">Contratos</th>
-                        <th scope="col">Terrenos</th>
+                        <th scope="col">Tierras</th>
                         <th scope="col">Rentas</th>
                         <th scope="col">Eventos</th>
                       </tr>
@@ -138,12 +177,12 @@
                     </tbody>
                   </table> 
             </div>
+            <h4>Balance: $ {{user.balance}}</h4>
           </div>  
         </div>
       </div>
     </div>
-    <div class="col-2"></div>
-    <div class="col-10" style="padding: 15px;">
+    <!-- <div class="col-10" style="padding: 15px;">
       <div class="row">
         <div class="col-3" *ngFor="let tierra of tierras" style="background-color: white;border-style: solid; border-width: 2px; border-color: black;">
           <img src="{{tierra.imagen}}" height="180px" width="255px">
@@ -154,6 +193,7 @@
             <br>
           </div>
       </div>
-    </div>
+    </div> -->
   </div>
+  <br><br>
 </body>

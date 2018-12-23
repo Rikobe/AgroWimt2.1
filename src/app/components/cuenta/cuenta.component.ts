@@ -11,6 +11,7 @@ import { FooterComponent } from '../footer/footer.component';
 })
 export class CuentaComponent implements OnInit {
   profile: any;
+  nombre: any;
   user: User = new User();
   info: any = {
     Contratos: 0,
@@ -62,10 +63,14 @@ export class CuentaComponent implements OnInit {
     // console.log(this.profile);
     this._userService.getUserProfile().subscribe(
       res => {
+        console.log(res);
         this.user = res['Usuario'];
+        this.nombre = this.user.nombre;
+        localStorage.setItem('user', this.nombre);
         if (this.user.fotoperfil == null){
           this.user.fotoperfil = "usericon.png"
         }
+
         // this.user.apellido = res['apellido'];
         // this.user.email = res['email'];
         // this.user.visibilidad = res['visibilidad'];
@@ -83,8 +88,8 @@ export class CuentaComponent implements OnInit {
         // this.user.tierras = res['tierras'];
         // this.user.rentas = res['rentas'];
         // this.user.eventos = res['eventos'];   
-        console.log(res);  
-        console.log(this.user);
+        //console.log(res);  
+        //console.log(this.user);
       },
       error => {
         console.log(error);
